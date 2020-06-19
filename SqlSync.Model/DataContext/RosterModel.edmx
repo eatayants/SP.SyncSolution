@@ -1,0 +1,1864 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="RosterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+        <EntityType Name="AccessControlItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ListMetadataId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ItemId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="TrusteeId" Nullable="false" Type="int" />
+          <Property Name="AccessRight" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="AccessControlList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ListMetadataId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="TrusteeId" Nullable="false" Type="int" />
+          <Property Name="AccessRight" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="int" />
+          <Property Name="Name" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="StateId" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="Definition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="TypeId" Nullable="false" Type="int" />
+          <Property Name="Code" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="Name" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Status" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="DefType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="int" />
+          <Property Name="Name" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="Hidden" Nullable="false" Type="bit" />
+          <Property Name="ReadOnly" Nullable="false" Type="bit" />
+        </EntityType>
+        <EntityType Name="EventStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Name" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="TypeId" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="HolidayEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="HolidayDate" Nullable="false" Type="datetime" />
+          <Property Name="HolidayId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Weekday" MaxLength="30" StoreGeneratedPattern="Computed" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="HolidayObserved">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="HolidayEventId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="StateId" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="HolidayType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="int" />
+          <Property Name="Name" Nullable="false" MaxLength="256" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="ListMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ListName" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="TableName" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="Key" MaxLength="255" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="ListMappingField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ListMappingId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ItemName" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="FieldName" Nullable="false" MaxLength="256" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="ListMetadata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Name" Nullable="false" MaxLength="512" Type="nvarchar" />
+          <Property Name="DataSource" MaxLength="512" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="ListMetadataAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ContentTypeId" Nullable="false" Type="int" />
+          <Property Name="ListMetadataId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="LabelText" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="ImageUrl" Type="nvarchar(max)" />
+          <Property Name="Command" Type="nvarchar(max)" />
+          <Property Name="AccessGroup" MaxLength="256" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="ListMetadataContentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="int" />
+          <Property Name="ListMetadataId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Name" Nullable="false" MaxLength="512" Type="nvarchar" />
+          <Property Name="NewItemUrl" MaxLength="512" Type="nvarchar" />
+          <Property Name="EditItemUrl" MaxLength="512" Type="nvarchar" />
+          <Property Name="DispItemUrl" MaxLength="512" Type="nvarchar" />
+          <Property Name="IsOnNewAction" Nullable="false" Type="bit" />
+          <Property Name="IsDefault" Nullable="false" Type="bit" />
+        </EntityType>
+        <EntityType Name="ListMetadataField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ListMetadataId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="InternalName" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="FieldName" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="FieldType" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="DefaultValue" Type="nvarchar(max)" />
+          <Property Name="DataSource" MaxLength="256" Type="nvarchar" />
+          <Property Name="DataSourceKey" MaxLength="256" Type="nvarchar" />
+          <Property Name="DataSourceField" MaxLength="256" Type="nvarchar" />
+          <Property Name="DataSourceType" Nullable="false" Type="int" />
+          <Property Name="IsStatic" Nullable="false" Type="bit" />
+          <Property Name="Required" Nullable="false" Type="bit" />
+          <Property Name="ReadOnly" Nullable="false" Type="bit" />
+          <Property Name="Hidden" Nullable="false" Type="bit" />
+          <Property Name="ControlProperties" Type="xml" />
+          <Property Name="ItemPosition" Type="int" />
+        </EntityType>
+        <EntityType Name="ListMetadataFieldContentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ContentTypeId" Nullable="false" Type="int" />
+          <Property Name="ListMetadataFieldId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ItemPosition" Type="int" />
+        </EntityType>
+        <EntityType Name="RosterEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="EventTypeId" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="RosterEventLock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="WorkerPersonId" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="int" />
+          <Property Name="Code" Nullable="false" MaxLength="3" Type="nvarchar" />
+          <Property Name="Name" Nullable="false" MaxLength="256" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="SystemOption">
+          <Key>
+            <PropertyRef Name="OptionName" />
+          </Key>
+          <Property Name="OptionName" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="OptionValue" Nullable="false" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ViewMetadata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ListMetadataId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Name" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="DisplayType" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="ViewData" Type="xml" />
+          <Property Name="CalendarScope" Type="nvarchar(max)" />
+          <Property Name="ItemLimit" Nullable="false" Type="int" />
+          <Property Name="IsDefault" Nullable="false" Type="bit" />
+          <Property Name="DynamicColourCodingSettings" Type="nvarchar(max)" />
+          <Property Name="StaticColourCodingSettings" Type="nvarchar(max)" />
+          <Property Name="ExcludeFields" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ViewMetadataField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ViewMetadataId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ListMetadataFieldId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="DisplayName" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="Hidden" Nullable="false" Type="bit" />
+          <Property Name="Position" Nullable="false" Type="int" />
+          <Property Name="OrderCriteria" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="ViewMetadataPopupSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ViewMetadataId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ListMetadataFieldId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Position" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="ViewMetadataWhereCritery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ViewMetadataId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ListMetadataFieldId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="CompareType" Nullable="false" Type="int" />
+          <Property Name="ConcateOperator" Nullable="false" Type="int" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RosterDb.dbo.vwEventStatus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwEventStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RosterDb.dbo.vwRosterEventTrackData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwRosterEventTrackData">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="RosterEventId" />
+            <PropertyRef Name="CreatedOn" />
+            <PropertyRef Name="XmlContent" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="RosterEventId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Nullable="false" Type="datetime" />
+          <Property Name="XmlContent" Nullable="false" Type="xml" />
+          <Property Name="Version" Type="bigint" />
+        </EntityType>
+        <Association Name="FK_AccessControlItem_ItemId">
+          <End Type="Self.RosterEvent" Multiplicity="1" Role="RosterEvent">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Self.AccessControlItem" Multiplicity="*" Role="AccessControlItem" />
+          <ReferentialConstraint>
+            <Principal Role="RosterEvent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccessControlItem">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccessControlItem_ListMetadataId">
+          <End Type="Self.ListMetadata" Multiplicity="1" Role="ListMetadata" />
+          <End Type="Self.AccessControlItem" Multiplicity="*" Role="AccessControlItem" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccessControlItem">
+              <PropertyRef Name="ListMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccessControlList_ListMetadataId">
+          <End Type="Self.ListMetadata" Multiplicity="1" Role="ListMetadata" />
+          <End Type="Self.AccessControlList" Multiplicity="*" Role="AccessControlList" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccessControlList">
+              <PropertyRef Name="ListMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_StateId">
+          <End Type="Self.State" Multiplicity="1" Role="State" />
+          <End Type="Self.City" Multiplicity="*" Role="City" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Definition_TypeId">
+          <End Type="Self.DefType" Multiplicity="1" Role="DefType" />
+          <End Type="Self.Definition" Multiplicity="*" Role="Definition" />
+          <ReferentialConstraint>
+            <Principal Role="DefType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Definition">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Holiday_TypeId">
+          <End Type="Self.HolidayType" Multiplicity="1" Role="HolidayType" />
+          <End Type="Self.Holiday" Multiplicity="*" Role="Holiday" />
+          <ReferentialConstraint>
+            <Principal Role="HolidayType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Holiday">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HolidayEvent_HolidayId">
+          <End Type="Self.Holiday" Multiplicity="1" Role="Holiday" />
+          <End Type="Self.HolidayEvent" Multiplicity="*" Role="HolidayEvent" />
+          <ReferentialConstraint>
+            <Principal Role="Holiday">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HolidayEvent">
+              <PropertyRef Name="HolidayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HolidayObserved_HolidayEventId">
+          <End Type="Self.HolidayEvent" Multiplicity="1" Role="HolidayEvent">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Self.HolidayObserved" Multiplicity="*" Role="HolidayObserved" />
+          <ReferentialConstraint>
+            <Principal Role="HolidayEvent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HolidayObserved">
+              <PropertyRef Name="HolidayEventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HolidayObserved_StateId">
+          <End Type="Self.State" Multiplicity="1" Role="State" />
+          <End Type="Self.HolidayObserved" Multiplicity="*" Role="HolidayObserved" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HolidayObserved">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListMappingField_ListMappingId">
+          <End Type="Self.ListMapping" Multiplicity="1" Role="ListMapping">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Self.ListMappingField" Multiplicity="*" Role="ListMappingField" />
+          <ReferentialConstraint>
+            <Principal Role="ListMapping">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMappingField">
+              <PropertyRef Name="ListMappingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListMetadataAction_ContentTypeId">
+          <End Type="Self.ListMetadataContentType" Multiplicity="1" Role="ListMetadataContentType">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Self.ListMetadataAction" Multiplicity="*" Role="ListMetadataAction" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadataContentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMetadataAction">
+              <PropertyRef Name="ContentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListMetadataAction_ListMetadataId">
+          <End Type="Self.ListMetadata" Multiplicity="1" Role="ListMetadata" />
+          <End Type="Self.ListMetadataAction" Multiplicity="*" Role="ListMetadataAction" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMetadataAction">
+              <PropertyRef Name="ListMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListMetadataContentType_ListMetadataId">
+          <End Type="Self.ListMetadata" Multiplicity="1" Role="ListMetadata" />
+          <End Type="Self.ListMetadataContentType" Multiplicity="*" Role="ListMetadataContentType" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMetadataContentType">
+              <PropertyRef Name="ListMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListMetadataField_ListMetadataId">
+          <End Type="Self.ListMetadata" Multiplicity="1" Role="ListMetadata" />
+          <End Type="Self.ListMetadataField" Multiplicity="*" Role="ListMetadataField" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMetadataField">
+              <PropertyRef Name="ListMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListMetadataFieldContentType_ContentTypeId">
+          <End Type="Self.ListMetadataContentType" Multiplicity="1" Role="ListMetadataContentType">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Self.ListMetadataFieldContentType" Multiplicity="*" Role="ListMetadataFieldContentType" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadataContentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMetadataFieldContentType">
+              <PropertyRef Name="ContentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListMetadataFieldContentType_ListMetadataFieldId">
+          <End Type="Self.ListMetadataField" Multiplicity="1" Role="ListMetadataField" />
+          <End Type="Self.ListMetadataFieldContentType" Multiplicity="*" Role="ListMetadataFieldContentType" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadataField">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMetadataFieldContentType">
+              <PropertyRef Name="ListMetadataFieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViewMetadata_ListMetadataId">
+          <End Type="Self.ListMetadata" Multiplicity="1" Role="ListMetadata" />
+          <End Type="Self.ViewMetadata" Multiplicity="*" Role="ViewMetadata" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadata">
+              <PropertyRef Name="ListMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViewMetadataField_ListMetadataFieldId">
+          <End Type="Self.ListMetadataField" Multiplicity="1" Role="ListMetadataField" />
+          <End Type="Self.ViewMetadataField" Multiplicity="*" Role="ViewMetadataField" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadataField">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadataField">
+              <PropertyRef Name="ListMetadataFieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViewMetadataField_ViewMetadataId">
+          <End Type="Self.ViewMetadata" Multiplicity="1" Role="ViewMetadata">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Self.ViewMetadataField" Multiplicity="*" Role="ViewMetadataField" />
+          <ReferentialConstraint>
+            <Principal Role="ViewMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadataField">
+              <PropertyRef Name="ViewMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViewMetadataPopupSetting_ListMetadataFieldId">
+          <End Type="Self.ListMetadataField" Multiplicity="1" Role="ListMetadataField" />
+          <End Type="Self.ViewMetadataPopupSetting" Multiplicity="*" Role="ViewMetadataPopupSetting" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadataField">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadataPopupSetting">
+              <PropertyRef Name="ListMetadataFieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViewMetadataPopupSetting_ViewMetadataId">
+          <End Type="Self.ViewMetadata" Multiplicity="1" Role="ViewMetadata">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Self.ViewMetadataPopupSetting" Multiplicity="*" Role="ViewMetadataPopupSetting" />
+          <ReferentialConstraint>
+            <Principal Role="ViewMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadataPopupSetting">
+              <PropertyRef Name="ViewMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViewMetadataWhereCritery_ListMetadataFieldId">
+          <End Type="Self.ListMetadataField" Multiplicity="1" Role="ListMetadataField" />
+          <End Type="Self.ViewMetadataWhereCritery" Multiplicity="*" Role="ViewMetadataWhereCritery" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadataField">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadataWhereCritery">
+              <PropertyRef Name="ListMetadataFieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViewMetadataWhereCritery_ViewMetadataId">
+          <End Type="Self.ViewMetadata" Multiplicity="1" Role="ViewMetadata">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Self.ViewMetadataWhereCritery" Multiplicity="*" Role="ViewMetadataWhereCritery" />
+          <ReferentialConstraint>
+            <Principal Role="ViewMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadataWhereCritery">
+              <PropertyRef Name="ViewMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Holiday_PopulateNextYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clear" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="RorterEvents_PlannedCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="eventIds" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="message" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="RorterEvents_TimesheetCheckApprove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="itemId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="startDate" Type="datetime" Mode="In" />
+          <Parameter Name="allow" Type="bit" Mode="InOut" />
+          <Parameter Name="message" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="RosterEvents_SetProperties" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="itemId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="message" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="RorterEvents_TimesheetCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="eventIds" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="message" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="RorterEvents_TimesheetsCheckApprove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="datetime" Mode="In" />
+          <Parameter Name="workerId" Type="int" Mode="In" />
+          <Parameter Name="allow" Type="bit" Mode="InOut" />
+          <Parameter Name="message" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="RorterEvents_WorkingCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="eventIds" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="message" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="SqlServerAgent_JobList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SqlServerAgent_Status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="status" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="RosterModelStoreContainer">
+          <EntitySet Name="AccessControlItem" EntityType="Self.AccessControlItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccessControlList" EntityType="Self.AccessControlList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Definition" EntityType="Self.Definition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DefType" EntityType="Self.DefType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventStatus" EntityType="Self.EventStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HolidayEvent" EntityType="Self.HolidayEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HolidayObserved" EntityType="Self.HolidayObserved" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HolidayType" EntityType="Self.HolidayType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListMapping" EntityType="Self.ListMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListMappingField" EntityType="Self.ListMappingField" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListMetadata" EntityType="Self.ListMetadata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListMetadataAction" EntityType="Self.ListMetadataAction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListMetadataContentType" EntityType="Self.ListMetadataContentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListMetadataField" EntityType="Self.ListMetadataField" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListMetadataFieldContentType" EntityType="Self.ListMetadataFieldContentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RosterEvent" EntityType="Self.RosterEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RosterEventLock" EntityType="Self.RosterEventLock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemOption" EntityType="Self.SystemOption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewMetadata" EntityType="Self.ViewMetadata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewMetadataField" EntityType="Self.ViewMetadataField" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewMetadataPopupSetting" EntityType="Self.ViewMetadataPopupSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewMetadataWhereCritery" EntityType="Self.ViewMetadataWhereCritery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwEventStatus" EntityType="Self.vwEventStatus" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwEventStatus].[Id] AS [Id]
+    FROM [dbo].[vwEventStatus] AS [vwEventStatus]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwRosterEventTrackData" EntityType="Self.vwRosterEventTrackData" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwRosterEventTrackData].[Id] AS [Id], 
+    [vwRosterEventTrackData].[RosterEventId] AS [RosterEventId], 
+    [vwRosterEventTrackData].[CreatedOn] AS [CreatedOn], 
+    [vwRosterEventTrackData].[XmlContent] AS [XmlContent], 
+    [vwRosterEventTrackData].[Version] AS [Version]
+    FROM [dbo].[vwRosterEventTrackData] AS [vwRosterEventTrackData]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AccessControlItem_ItemId" Association="Self.FK_AccessControlItem_ItemId">
+            <End EntitySet="RosterEvent" Role="RosterEvent" />
+            <End EntitySet="AccessControlItem" Role="AccessControlItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccessControlItem_ListMetadataId" Association="Self.FK_AccessControlItem_ListMetadataId">
+            <End EntitySet="ListMetadata" Role="ListMetadata" />
+            <End EntitySet="AccessControlItem" Role="AccessControlItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccessControlList_ListMetadataId" Association="Self.FK_AccessControlList_ListMetadataId">
+            <End EntitySet="ListMetadata" Role="ListMetadata" />
+            <End EntitySet="AccessControlList" Role="AccessControlList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_StateId" Association="Self.FK_City_StateId">
+            <End EntitySet="State" Role="State" />
+            <End EntitySet="City" Role="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Definition_TypeId" Association="Self.FK_Definition_TypeId">
+            <End EntitySet="DefType" Role="DefType" />
+            <End EntitySet="Definition" Role="Definition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Holiday_TypeId" Association="Self.FK_Holiday_TypeId">
+            <End EntitySet="HolidayType" Role="HolidayType" />
+            <End EntitySet="Holiday" Role="Holiday" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HolidayEvent_HolidayId" Association="Self.FK_HolidayEvent_HolidayId">
+            <End EntitySet="Holiday" Role="Holiday" />
+            <End EntitySet="HolidayEvent" Role="HolidayEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HolidayObserved_HolidayEventId" Association="Self.FK_HolidayObserved_HolidayEventId">
+            <End EntitySet="HolidayEvent" Role="HolidayEvent" />
+            <End EntitySet="HolidayObserved" Role="HolidayObserved" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HolidayObserved_StateId" Association="Self.FK_HolidayObserved_StateId">
+            <End EntitySet="State" Role="State" />
+            <End EntitySet="HolidayObserved" Role="HolidayObserved" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListMappingField_ListMappingId" Association="Self.FK_ListMappingField_ListMappingId">
+            <End EntitySet="ListMapping" Role="ListMapping" />
+            <End EntitySet="ListMappingField" Role="ListMappingField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListMetadataAction_ContentTypeId" Association="Self.FK_ListMetadataAction_ContentTypeId">
+            <End EntitySet="ListMetadataContentType" Role="ListMetadataContentType" />
+            <End EntitySet="ListMetadataAction" Role="ListMetadataAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListMetadataAction_ListMetadataId" Association="Self.FK_ListMetadataAction_ListMetadataId">
+            <End EntitySet="ListMetadata" Role="ListMetadata" />
+            <End EntitySet="ListMetadataAction" Role="ListMetadataAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListMetadataContentType_ListMetadataId" Association="Self.FK_ListMetadataContentType_ListMetadataId">
+            <End EntitySet="ListMetadata" Role="ListMetadata" />
+            <End EntitySet="ListMetadataContentType" Role="ListMetadataContentType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListMetadataField_ListMetadataId" Association="Self.FK_ListMetadataField_ListMetadataId">
+            <End EntitySet="ListMetadata" Role="ListMetadata" />
+            <End EntitySet="ListMetadataField" Role="ListMetadataField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListMetadataFieldContentType_ContentTypeId" Association="Self.FK_ListMetadataFieldContentType_ContentTypeId">
+            <End EntitySet="ListMetadataContentType" Role="ListMetadataContentType" />
+            <End EntitySet="ListMetadataFieldContentType" Role="ListMetadataFieldContentType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListMetadataFieldContentType_ListMetadataFieldId" Association="Self.FK_ListMetadataFieldContentType_ListMetadataFieldId">
+            <End EntitySet="ListMetadataField" Role="ListMetadataField" />
+            <End EntitySet="ListMetadataFieldContentType" Role="ListMetadataFieldContentType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViewMetadata_ListMetadataId" Association="Self.FK_ViewMetadata_ListMetadataId">
+            <End EntitySet="ListMetadata" Role="ListMetadata" />
+            <End EntitySet="ViewMetadata" Role="ViewMetadata" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViewMetadataField_ListMetadataFieldId" Association="Self.FK_ViewMetadataField_ListMetadataFieldId">
+            <End EntitySet="ListMetadataField" Role="ListMetadataField" />
+            <End EntitySet="ViewMetadataField" Role="ViewMetadataField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViewMetadataField_ViewMetadataId" Association="Self.FK_ViewMetadataField_ViewMetadataId">
+            <End EntitySet="ViewMetadata" Role="ViewMetadata" />
+            <End EntitySet="ViewMetadataField" Role="ViewMetadataField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViewMetadataPopupSetting_ListMetadataFieldId" Association="Self.FK_ViewMetadataPopupSetting_ListMetadataFieldId">
+            <End EntitySet="ListMetadataField" Role="ListMetadataField" />
+            <End EntitySet="ViewMetadataPopupSetting" Role="ViewMetadataPopupSetting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViewMetadataPopupSetting_ViewMetadataId" Association="Self.FK_ViewMetadataPopupSetting_ViewMetadataId">
+            <End EntitySet="ViewMetadata" Role="ViewMetadata" />
+            <End EntitySet="ViewMetadataPopupSetting" Role="ViewMetadataPopupSetting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViewMetadataWhereCritery_ListMetadataFieldId" Association="Self.FK_ViewMetadataWhereCritery_ListMetadataFieldId">
+            <End EntitySet="ListMetadataField" Role="ListMetadataField" />
+            <End EntitySet="ViewMetadataWhereCritery" Role="ViewMetadataWhereCritery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViewMetadataWhereCritery_ViewMetadataId" Association="Self.FK_ViewMetadataWhereCritery_ViewMetadataId">
+            <End EntitySet="ViewMetadata" Role="ViewMetadata" />
+            <End EntitySet="ViewMetadataWhereCritery" Role="ViewMetadataWhereCritery" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RosterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RosterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Definitions" EntityType="RosterModel.Definition" />
+          <EntitySet Name="DefTypes" EntityType="RosterModel.DefType" />
+          <EntitySet Name="RosterEvents" EntityType="RosterModel.RosterEvent" />
+          <EntitySet Name="SystemOptions" EntityType="RosterModel.SystemOption" />
+          <EntitySet Name="ViewMetadatas" EntityType="RosterModel.ViewMetadata" />
+          <EntitySet Name="ViewMetadataFields" EntityType="RosterModel.ViewMetadataField" />
+          <EntitySet Name="ViewMetadataPopupSettings" EntityType="RosterModel.ViewMetadataPopupSetting" />
+          <EntitySet Name="ViewMetadataWhereCriteries" EntityType="RosterModel.ViewMetadataWhereCritery" />
+          <AssociationSet Name="FK_Definition_TypeId" Association="RosterModel.FK_Definition_TypeId">
+            <End Role="DefType" EntitySet="DefTypes" />
+            <End Role="Definition" EntitySet="Definitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViewMetadataField_ViewMetadataId" Association="RosterModel.FK_ViewMetadataField_ViewMetadataId">
+            <End Role="ViewMetadata" EntitySet="ViewMetadatas" />
+            <End Role="ViewMetadataField" EntitySet="ViewMetadataFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViewMetadataPopupSetting_ViewMetadataId" Association="RosterModel.FK_ViewMetadataPopupSetting_ViewMetadataId">
+            <End Role="ViewMetadata" EntitySet="ViewMetadatas" />
+            <End Role="ViewMetadataPopupSetting" EntitySet="ViewMetadataPopupSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViewMetadataWhereCritery_ViewMetadataId" Association="RosterModel.FK_ViewMetadataWhereCritery_ViewMetadataId">
+            <End Role="ViewMetadata" EntitySet="ViewMetadatas" />
+            <End Role="ViewMetadataWhereCritery" EntitySet="ViewMetadataWhereCriteries" />
+          </AssociationSet>
+          <EntitySet Name="ListMappings" EntityType="RosterModel.ListMapping" />
+          <EntitySet Name="ListMappingFields" EntityType="RosterModel.ListMappingField" />
+          <AssociationSet Name="FK_ListMappingField_ListMappingId" Association="RosterModel.FK_ListMappingField_ListMappingId">
+            <End Role="ListMapping" EntitySet="ListMappings" />
+            <End Role="ListMappingField" EntitySet="ListMappingFields" />
+          </AssociationSet>
+          <EntitySet Name="ListMetadataActions" EntityType="RosterModel.ListMetadataAction" />
+          <EntitySet Name="Cities" EntityType="RosterModel.City" />
+          <EntitySet Name="HolidayObserveds" EntityType="RosterModel.HolidayObserved" />
+          <EntitySet Name="States" EntityType="RosterModel.State" />
+          <AssociationSet Name="FK_City_StateId" Association="RosterModel.FK_City_StateId">
+            <End Role="State" EntitySet="States" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HolidayObserved_StateId" Association="RosterModel.FK_HolidayObserved_StateId">
+            <End Role="State" EntitySet="States" />
+            <End Role="HolidayObserved" EntitySet="HolidayObserveds" />
+          </AssociationSet>
+          <EntitySet Name="ListMetadataFields" EntityType="RosterModel.ListMetadataField" />
+          <AssociationSet Name="FK_ViewMetadataField_ListMetadataFieldId" Association="RosterModel.FK_ViewMetadataField_ListMetadataFieldId">
+            <End Role="ListMetadataField" EntitySet="ListMetadataFields" />
+            <End Role="ViewMetadataField" EntitySet="ViewMetadataFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViewMetadataPopupSetting_ListMetadataFieldId" Association="RosterModel.FK_ViewMetadataPopupSetting_ListMetadataFieldId">
+            <End Role="ListMetadataField" EntitySet="ListMetadataFields" />
+            <End Role="ViewMetadataPopupSetting" EntitySet="ViewMetadataPopupSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViewMetadataWhereCritery_ListMetadataFieldId" Association="RosterModel.FK_ViewMetadataWhereCritery_ListMetadataFieldId">
+            <End Role="ListMetadataField" EntitySet="ListMetadataFields" />
+            <End Role="ViewMetadataWhereCritery" EntitySet="ViewMetadataWhereCriteries" />
+          </AssociationSet>
+          <EntitySet Name="ListMetadatas" EntityType="RosterModel.ListMetadata" />
+          <EntitySet Name="ListMetadataContentTypes" EntityType="RosterModel.ListMetadataContentType" />
+          <EntitySet Name="ListMetadataFieldContentTypes" EntityType="RosterModel.ListMetadataFieldContentType" />
+          <AssociationSet Name="FK_ListMetadataAction_ListMetadataId" Association="RosterModel.FK_ListMetadataAction_ListMetadataId">
+            <End Role="ListMetadata" EntitySet="ListMetadatas" />
+            <End Role="ListMetadataAction" EntitySet="ListMetadataActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListMetadataContentType_ListMetadataId" Association="RosterModel.FK_ListMetadataContentType_ListMetadataId">
+            <End Role="ListMetadata" EntitySet="ListMetadatas" />
+            <End Role="ListMetadataContentType" EntitySet="ListMetadataContentTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListMetadataField_ListMetadataId" Association="RosterModel.FK_ListMetadataField_ListMetadataId">
+            <End Role="ListMetadata" EntitySet="ListMetadatas" />
+            <End Role="ListMetadataField" EntitySet="ListMetadataFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ViewMetadata_ListMetadataId" Association="RosterModel.FK_ViewMetadata_ListMetadataId">
+            <End Role="ListMetadata" EntitySet="ListMetadatas" />
+            <End Role="ViewMetadata" EntitySet="ViewMetadatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListMetadataFieldContentType_ContentTypeId" Association="RosterModel.FK_ListMetadataFieldContentType_ContentTypeId">
+            <End Role="ListMetadataContentType" EntitySet="ListMetadataContentTypes" />
+            <End Role="ListMetadataFieldContentType" EntitySet="ListMetadataFieldContentTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListMetadataFieldContentType_ListMetadataFieldId" Association="RosterModel.FK_ListMetadataFieldContentType_ListMetadataFieldId">
+            <End Role="ListMetadataField" EntitySet="ListMetadataFields" />
+            <End Role="ListMetadataFieldContentType" EntitySet="ListMetadataFieldContentTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListMetadataAction_ContentTypeId" Association="RosterModel.FK_ListMetadataAction_ContentTypeId">
+            <End Role="ListMetadataContentType" EntitySet="ListMetadataContentTypes" />
+            <End Role="ListMetadataAction" EntitySet="ListMetadataActions" />
+          </AssociationSet>
+          <EntitySet Name="HolidayEvents" EntityType="RosterModel.HolidayEvent" />
+          <AssociationSet Name="FK_HolidayObserved_HolidayEventId" Association="RosterModel.FK_HolidayObserved_HolidayEventId">
+            <End Role="HolidayEvent" EntitySet="HolidayEvents" />
+            <End Role="HolidayObserved" EntitySet="HolidayObserveds" />
+          </AssociationSet>
+          <EntitySet Name="EventStatuses" EntityType="RosterModel.EventStatus" />
+          <EntitySet Name="Holidays" EntityType="RosterModel.Holiday" />
+          <EntitySet Name="HolidayTypes" EntityType="RosterModel.HolidayType" />
+          <AssociationSet Name="FK_Holiday_TypeId" Association="RosterModel.FK_Holiday_TypeId">
+            <End Role="HolidayType" EntitySet="HolidayTypes" />
+            <End Role="Holiday" EntitySet="Holidays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HolidayEvent_HolidayId" Association="RosterModel.FK_HolidayEvent_HolidayId">
+            <End Role="Holiday" EntitySet="Holidays" />
+            <End Role="HolidayEvent" EntitySet="HolidayEvents" />
+          </AssociationSet>
+          <EntitySet Name="AccessControlItems" EntityType="RosterModel.AccessControlItem" />
+          <EntitySet Name="AccessControlLists" EntityType="RosterModel.AccessControlList" />
+          <AssociationSet Name="FK_AccessControlItem_ItemId" Association="RosterModel.FK_AccessControlItem_ItemId">
+            <End Role="RosterEvent" EntitySet="RosterEvents" />
+            <End Role="AccessControlItem" EntitySet="AccessControlItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccessControlItem_ListMetadataId" Association="RosterModel.FK_AccessControlItem_ListMetadataId">
+            <End Role="ListMetadata" EntitySet="ListMetadatas" />
+            <End Role="AccessControlItem" EntitySet="AccessControlItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccessControlList_ListMetadataId" Association="RosterModel.FK_AccessControlList_ListMetadataId">
+            <End Role="ListMetadata" EntitySet="ListMetadatas" />
+            <End Role="AccessControlList" EntitySet="AccessControlLists" />
+          </AssociationSet>
+          <FunctionImport Name="Holiday_PopulateNextYear">
+          <Parameter Name="clear" Type="Boolean" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="RorterEvents_PlannedCreate">
+            <Parameter Name="eventIds" Type="String" Mode="In" />
+            <Parameter Name="message" Type="String" Mode="InOut" />
+          </FunctionImport>
+          <FunctionImport Name="RorterEvents_TimesheetCreate">
+            <Parameter Name="eventIds" Type="String" Mode="In" />
+            <Parameter Name="message" Type="String" Mode="InOut" />
+          </FunctionImport>
+          <FunctionImport Name="SqlServerAgent_Status">
+          <Parameter Name="status" Type="Int32" Mode="InOut" />
+          </FunctionImport>
+          <FunctionImport Name="SqlServerAgent_JobList" ReturnType="Collection(RosterModel.SqlServerAgent_JobList_Result)" />
+          <EntitySet Name="RosterEventLocks" EntityType="RosterModel.RosterEventLock" />
+          <EntitySet Name="vwEventStatus" EntityType="RosterModel.vwEventStatu" />
+          <FunctionImport Name="RosterEvents_SetProperties">
+            <Parameter Name="itemId" Type="Guid" Mode="In" />
+            <Parameter Name="message" Type="String" Mode="InOut" />
+          </FunctionImport>
+          <FunctionImport Name="RorterEvents_TimesheetCheckApprove">
+            <Parameter Name="itemId" Type="Guid" Mode="In" />
+            <Parameter Name="startDate" Type="DateTime" Mode="In" />
+            <Parameter Name="allow" Type="Boolean" Mode="InOut" />
+            <Parameter Name="message" Type="String" Mode="InOut" />
+          </FunctionImport>
+          <FunctionImport Name="RorterEvents_TimesheetsCheckApprove">
+            <Parameter Name="startDate" Type="DateTime" Mode="In" />
+            <Parameter Name="workerId" Type="Int32" Mode="In" />
+            <Parameter Name="allow" Type="Boolean" Mode="InOut" />
+            <Parameter Name="message" Type="String" Mode="InOut" />
+          </FunctionImport>
+          <FunctionImport Name="RorterEvents_WorkingCreate">
+            <Parameter Name="eventIds" Type="String" Mode="In" />
+            <Parameter Name="message" Type="String" Mode="InOut" />
+          </FunctionImport>
+          <EntitySet Name="vwRosterEventTrackData" EntityType="RosterModel.vwRosterEventTrackData" />
+          </EntityContainer>
+        <EntityType Name="Definition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DefType" Relationship="RosterModel.FK_Definition_TypeId" FromRole="Definition" ToRole="DefType" />
+        </EntityType>
+        <EntityType Name="DefType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Hidden" Type="Boolean" Nullable="false" />
+          <Property Name="ReadOnly" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Definitions" Relationship="RosterModel.FK_Definition_TypeId" FromRole="DefType" ToRole="Definition" />
+        </EntityType>
+        <EntityType Name="RosterEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="Guid" />
+          <Property Name="EventTypeId" Nullable="false" Type="Int32" />
+          <NavigationProperty Name="AccessControlItems" Relationship="RosterModel.FK_AccessControlItem_ItemId" FromRole="RosterEvent" ToRole="AccessControlItem" />
+        </EntityType>
+        <EntityType Name="SystemOption">
+          <Key>
+            <PropertyRef Name="OptionName" />
+          </Key>
+          <Property Name="OptionName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="OptionValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ViewMetadata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ListMetadataId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ViewData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CalendarScope" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ItemLimit" Type="Int32" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="DynamicColourCodingSettings" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StaticColourCodingSettings" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExcludeFields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ViewMetadataFields" Relationship="RosterModel.FK_ViewMetadataField_ViewMetadataId" FromRole="ViewMetadata" ToRole="ViewMetadataField" />
+          <NavigationProperty Name="ViewMetadataPopupSettings" Relationship="RosterModel.FK_ViewMetadataPopupSetting_ViewMetadataId" FromRole="ViewMetadata" ToRole="ViewMetadataPopupSetting" />
+          <NavigationProperty Name="ViewMetadataWhereCriteries" Relationship="RosterModel.FK_ViewMetadataWhereCritery_ViewMetadataId" FromRole="ViewMetadata" ToRole="ViewMetadataWhereCritery" />
+          <NavigationProperty Name="ListMetadata" Relationship="RosterModel.FK_ViewMetadata_ListMetadataId" FromRole="ViewMetadata" ToRole="ListMetadata" />
+        </EntityType>
+        <EntityType Name="ViewMetadataField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ViewMetadataId" Type="Guid" Nullable="false" />
+          <Property Name="ListMetadataFieldId" Type="Guid" Nullable="false" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Hidden" Type="Boolean" Nullable="false" />
+          <Property Name="Position" Type="Int32" Nullable="false" />
+          <Property Name="OrderCriteria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ViewMetadata" Relationship="RosterModel.FK_ViewMetadataField_ViewMetadataId" FromRole="ViewMetadataField" ToRole="ViewMetadata" />
+          <NavigationProperty Name="ListMetadataField" Relationship="RosterModel.FK_ViewMetadataField_ListMetadataFieldId" FromRole="ViewMetadataField" ToRole="ListMetadataField" />
+        </EntityType>
+        <EntityType Name="ViewMetadataPopupSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ViewMetadataId" Type="Guid" Nullable="false" />
+          <Property Name="ListMetadataFieldId" Type="Guid" Nullable="false" />
+          <Property Name="Position" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ViewMetadata" Relationship="RosterModel.FK_ViewMetadataPopupSetting_ViewMetadataId" FromRole="ViewMetadataPopupSetting" ToRole="ViewMetadata" />
+          <NavigationProperty Name="ListMetadataField" Relationship="RosterModel.FK_ViewMetadataPopupSetting_ListMetadataFieldId" FromRole="ViewMetadataPopupSetting" ToRole="ListMetadataField" />
+        </EntityType>
+        <EntityType Name="ViewMetadataWhereCritery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ViewMetadataId" Type="Guid" Nullable="false" />
+          <Property Name="ListMetadataFieldId" Type="Guid" Nullable="false" />
+          <Property Name="CompareType" Type="Int32" Nullable="false" />
+          <Property Name="ConcateOperator" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ViewMetadata" Relationship="RosterModel.FK_ViewMetadataWhereCritery_ViewMetadataId" FromRole="ViewMetadataWhereCritery" ToRole="ViewMetadata" />
+          <NavigationProperty Name="ListMetadataField" Relationship="RosterModel.FK_ViewMetadataWhereCritery_ListMetadataFieldId" FromRole="ViewMetadataWhereCritery" ToRole="ListMetadataField" />
+        </EntityType>
+        <Association Name="FK_Definition_TypeId">
+          <End Type="RosterModel.DefType" Role="DefType" Multiplicity="1" />
+          <End Type="RosterModel.Definition" Role="Definition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Definition">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViewMetadataField_ViewMetadataId">
+          <End Type="RosterModel.ViewMetadata" Role="ViewMetadata" Multiplicity="1" />
+          <End Type="RosterModel.ViewMetadataField" Role="ViewMetadataField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ViewMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadataField">
+              <PropertyRef Name="ViewMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViewMetadataPopupSetting_ViewMetadataId">
+          <End Type="RosterModel.ViewMetadata" Role="ViewMetadata" Multiplicity="1" />
+          <End Type="RosterModel.ViewMetadataPopupSetting" Role="ViewMetadataPopupSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ViewMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadataPopupSetting">
+              <PropertyRef Name="ViewMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViewMetadataWhereCritery_ViewMetadataId">
+          <End Type="RosterModel.ViewMetadata" Role="ViewMetadata" Multiplicity="1" />
+          <End Type="RosterModel.ViewMetadataWhereCritery" Role="ViewMetadataWhereCritery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ViewMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadataWhereCritery">
+              <PropertyRef Name="ViewMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ListMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ListName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TableName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ListMappingFields" Relationship="RosterModel.FK_ListMappingField_ListMappingId" FromRole="ListMapping" ToRole="ListMappingField" />
+          <Property Name="Key" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ListMappingField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ListMappingId" Type="Guid" Nullable="false" />
+          <Property Name="ItemName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ListMapping" Relationship="RosterModel.FK_ListMappingField_ListMappingId" FromRole="ListMappingField" ToRole="ListMapping" />
+        </EntityType>
+        <Association Name="FK_ListMappingField_ListMappingId">
+          <End Type="RosterModel.ListMapping" Role="ListMapping" Multiplicity="1" />
+          <End Type="RosterModel.ListMappingField" Role="ListMappingField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMapping">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMappingField">
+              <PropertyRef Name="ListMappingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ListMetadataAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ListMetadataId" Type="Guid" Nullable="false" />
+          <Property Name="LabelText" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Command" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccessGroup" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ListMetadata" Relationship="RosterModel.FK_ListMetadataAction_ListMetadataId" FromRole="ListMetadataAction" ToRole="ListMetadata" />
+          <Property Name="ContentTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ListMetadataContentType" Relationship="RosterModel.FK_ListMetadataAction_ContentTypeId" FromRole="ListMetadataAction" ToRole="ListMetadataContentType" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="State" Relationship="RosterModel.FK_City_StateId" FromRole="City" ToRole="State" />
+        </EntityType>
+        <EntityType Name="HolidayObserved">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="HolidayEventId" Type="Guid" Nullable="false" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="State" Relationship="RosterModel.FK_HolidayObserved_StateId" FromRole="HolidayObserved" ToRole="State" />
+          <NavigationProperty Name="HolidayEvent" Relationship="RosterModel.FK_HolidayObserved_HolidayEventId" FromRole="HolidayObserved" ToRole="HolidayEvent" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cities" Relationship="RosterModel.FK_City_StateId" FromRole="State" ToRole="City" />
+          <NavigationProperty Name="HolidayObserveds" Relationship="RosterModel.FK_HolidayObserved_StateId" FromRole="State" ToRole="HolidayObserved" />
+        </EntityType>
+        <Association Name="FK_City_StateId">
+          <End Type="RosterModel.State" Role="State" Multiplicity="1" />
+          <End Type="RosterModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HolidayObserved_StateId">
+          <End Type="RosterModel.State" Role="State" Multiplicity="1" />
+          <End Type="RosterModel.HolidayObserved" Role="HolidayObserved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HolidayObserved">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ListMetadataField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ListMetadataId" Type="Guid" Nullable="false" />
+          <Property Name="InternalName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FieldType" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataSource" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DataSourceKey" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DataSourceField" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DataSourceType" Type="Int32" Nullable="false" />
+          <Property Name="IsStatic" Type="Boolean" Nullable="false" />
+          <Property Name="Required" Type="Boolean" Nullable="false" />
+          <Property Name="ReadOnly" Type="Boolean" Nullable="false" />
+          <Property Name="Hidden" Type="Boolean" Nullable="false" />
+          <Property Name="ControlProperties" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ItemPosition" Type="Int32" />
+          <NavigationProperty Name="ViewMetadataFields" Relationship="RosterModel.FK_ViewMetadataField_ListMetadataFieldId" FromRole="ListMetadataField" ToRole="ViewMetadataField" />
+          <NavigationProperty Name="ViewMetadataPopupSettings" Relationship="RosterModel.FK_ViewMetadataPopupSetting_ListMetadataFieldId" FromRole="ListMetadataField" ToRole="ViewMetadataPopupSetting" />
+          <NavigationProperty Name="ViewMetadataWhereCriteries" Relationship="RosterModel.FK_ViewMetadataWhereCritery_ListMetadataFieldId" FromRole="ListMetadataField" ToRole="ViewMetadataWhereCritery" />
+          <NavigationProperty Name="ListMetadata" Relationship="RosterModel.FK_ListMetadataField_ListMetadataId" FromRole="ListMetadataField" ToRole="ListMetadata" />
+          <NavigationProperty Name="ListMetadataFieldContentTypes" Relationship="RosterModel.FK_ListMetadataFieldContentType_ListMetadataFieldId" FromRole="ListMetadataField" ToRole="ListMetadataFieldContentType" />
+        </EntityType>
+        <Association Name="FK_ViewMetadataField_ListMetadataFieldId">
+          <End Type="RosterModel.ListMetadataField" Role="ListMetadataField" Multiplicity="1" />
+          <End Type="RosterModel.ViewMetadataField" Role="ViewMetadataField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadataField">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadataField">
+              <PropertyRef Name="ListMetadataFieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViewMetadataPopupSetting_ListMetadataFieldId">
+          <End Type="RosterModel.ListMetadataField" Role="ListMetadataField" Multiplicity="1" />
+          <End Type="RosterModel.ViewMetadataPopupSetting" Role="ViewMetadataPopupSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadataField">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadataPopupSetting">
+              <PropertyRef Name="ListMetadataFieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViewMetadataWhereCritery_ListMetadataFieldId">
+          <End Type="RosterModel.ListMetadataField" Role="ListMetadataField" Multiplicity="1" />
+          <End Type="RosterModel.ViewMetadataWhereCritery" Role="ViewMetadataWhereCritery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadataField">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadataWhereCritery">
+              <PropertyRef Name="ListMetadataFieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ListMetadata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="DataSource" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ListMetadataActions" Relationship="RosterModel.FK_ListMetadataAction_ListMetadataId" FromRole="ListMetadata" ToRole="ListMetadataAction" />
+          <NavigationProperty Name="ListMetadataContentTypes" Relationship="RosterModel.FK_ListMetadataContentType_ListMetadataId" FromRole="ListMetadata" ToRole="ListMetadataContentType" />
+          <NavigationProperty Name="ListMetadataFields" Relationship="RosterModel.FK_ListMetadataField_ListMetadataId" FromRole="ListMetadata" ToRole="ListMetadataField" />
+          <NavigationProperty Name="ViewMetadatas" Relationship="RosterModel.FK_ViewMetadata_ListMetadataId" FromRole="ListMetadata" ToRole="ViewMetadata" />
+          <NavigationProperty Name="AccessControlItems" Relationship="RosterModel.FK_AccessControlItem_ListMetadataId" FromRole="ListMetadata" ToRole="AccessControlItem" />
+          <NavigationProperty Name="AccessControlLists" Relationship="RosterModel.FK_AccessControlList_ListMetadataId" FromRole="ListMetadata" ToRole="AccessControlList" />
+          </EntityType>
+        <EntityType Name="ListMetadataContentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ListMetadataId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="NewItemUrl" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="EditItemUrl" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="DispItemUrl" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="IsOnNewAction" Type="Boolean" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ListMetadata" Relationship="RosterModel.FK_ListMetadataContentType_ListMetadataId" FromRole="ListMetadataContentType" ToRole="ListMetadata" />
+          <NavigationProperty Name="ListMetadataFieldContentTypes" Relationship="RosterModel.FK_ListMetadataFieldContentType_ContentTypeId" FromRole="ListMetadataContentType" ToRole="ListMetadataFieldContentType" />
+          <NavigationProperty Name="ListMetadataActions" Relationship="RosterModel.FK_ListMetadataAction_ContentTypeId" FromRole="ListMetadataContentType" ToRole="ListMetadataAction" />
+        </EntityType>
+        <EntityType Name="ListMetadataFieldContentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ContentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ListMetadataFieldId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ListMetadataContentType" Relationship="RosterModel.FK_ListMetadataFieldContentType_ContentTypeId" FromRole="ListMetadataFieldContentType" ToRole="ListMetadataContentType" />
+          <NavigationProperty Name="ListMetadataField" Relationship="RosterModel.FK_ListMetadataFieldContentType_ListMetadataFieldId" FromRole="ListMetadataFieldContentType" ToRole="ListMetadataField" />
+          <Property Name="ItemPosition" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_ListMetadataAction_ListMetadataId">
+          <End Type="RosterModel.ListMetadata" Role="ListMetadata" Multiplicity="1" />
+          <End Type="RosterModel.ListMetadataAction" Role="ListMetadataAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMetadataAction">
+              <PropertyRef Name="ListMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListMetadataContentType_ListMetadataId">
+          <End Type="RosterModel.ListMetadata" Role="ListMetadata" Multiplicity="1" />
+          <End Type="RosterModel.ListMetadataContentType" Role="ListMetadataContentType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMetadataContentType">
+              <PropertyRef Name="ListMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListMetadataField_ListMetadataId">
+          <End Type="RosterModel.ListMetadata" Role="ListMetadata" Multiplicity="1" />
+          <End Type="RosterModel.ListMetadataField" Role="ListMetadataField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMetadataField">
+              <PropertyRef Name="ListMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ViewMetadata_ListMetadataId">
+          <End Type="RosterModel.ListMetadata" Role="ListMetadata" Multiplicity="1" />
+          <End Type="RosterModel.ViewMetadata" Role="ViewMetadata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewMetadata">
+              <PropertyRef Name="ListMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListMetadataFieldContentType_ContentTypeId">
+          <End Type="RosterModel.ListMetadataContentType" Role="ListMetadataContentType" Multiplicity="1" />
+          <End Type="RosterModel.ListMetadataFieldContentType" Role="ListMetadataFieldContentType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadataContentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMetadataFieldContentType">
+              <PropertyRef Name="ContentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListMetadataFieldContentType_ListMetadataFieldId">
+          <End Type="RosterModel.ListMetadataField" Role="ListMetadataField" Multiplicity="1" />
+          <End Type="RosterModel.ListMetadataFieldContentType" Role="ListMetadataFieldContentType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadataField">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMetadataFieldContentType">
+              <PropertyRef Name="ListMetadataFieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListMetadataAction_ContentTypeId">
+          <End Type="RosterModel.ListMetadataContentType" Role="ListMetadataContentType" Multiplicity="1" />
+          <End Type="RosterModel.ListMetadataAction" Role="ListMetadataAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadataContentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMetadataAction">
+              <PropertyRef Name="ContentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HolidayEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="HolidayDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HolidayId" Type="Guid" Nullable="false" />
+          <Property Name="Weekday" Type="String" MaxLength="30" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="HolidayObserveds" Relationship="RosterModel.FK_HolidayObserved_HolidayEventId" FromRole="HolidayEvent" ToRole="HolidayObserved" />
+          <NavigationProperty Name="Holiday" Relationship="RosterModel.FK_HolidayEvent_HolidayId" FromRole="HolidayEvent" ToRole="Holiday" />
+        </EntityType>
+        <Association Name="FK_HolidayObserved_HolidayEventId">
+          <End Type="RosterModel.HolidayEvent" Role="HolidayEvent" Multiplicity="1" />
+          <End Type="RosterModel.HolidayObserved" Role="HolidayObserved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HolidayEvent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HolidayObserved">
+              <PropertyRef Name="HolidayEventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EventStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HolidayType" Relationship="RosterModel.FK_Holiday_TypeId" FromRole="Holiday" ToRole="HolidayType" />
+          <NavigationProperty Name="HolidayEvents" Relationship="RosterModel.FK_HolidayEvent_HolidayId" FromRole="Holiday" ToRole="HolidayEvent" />
+        </EntityType>
+        <EntityType Name="HolidayType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Holidays" Relationship="RosterModel.FK_Holiday_TypeId" FromRole="HolidayType" ToRole="Holiday" />
+        </EntityType>
+        <Association Name="FK_Holiday_TypeId">
+          <End Type="RosterModel.HolidayType" Role="HolidayType" Multiplicity="1" />
+          <End Type="RosterModel.Holiday" Role="Holiday" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HolidayType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Holiday">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HolidayEvent_HolidayId">
+          <End Type="RosterModel.Holiday" Role="Holiday" Multiplicity="1" />
+          <End Type="RosterModel.HolidayEvent" Role="HolidayEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Holiday">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HolidayEvent">
+              <PropertyRef Name="HolidayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AccessControlItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ListMetadataId" Type="Guid" Nullable="false" />
+          <Property Name="ItemId" Type="Guid" Nullable="false" />
+          <Property Name="TrusteeId" Type="Int32" Nullable="false" />
+          <Property Name="AccessRight" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RosterEvent" Relationship="RosterModel.FK_AccessControlItem_ItemId" FromRole="AccessControlItem" ToRole="RosterEvent" />
+          <NavigationProperty Name="ListMetadata" Relationship="RosterModel.FK_AccessControlItem_ListMetadataId" FromRole="AccessControlItem" ToRole="ListMetadata" />
+        </EntityType>
+        <EntityType Name="AccessControlList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ListMetadataId" Type="Guid" Nullable="false" />
+          <Property Name="TrusteeId" Type="Int32" Nullable="false" />
+          <Property Name="AccessRight" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ListMetadata" Relationship="RosterModel.FK_AccessControlList_ListMetadataId" FromRole="AccessControlList" ToRole="ListMetadata" />
+        </EntityType>
+        <Association Name="FK_AccessControlItem_ItemId">
+          <End Type="RosterModel.RosterEvent" Role="RosterEvent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="RosterModel.AccessControlItem" Role="AccessControlItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RosterEvent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccessControlItem">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccessControlItem_ListMetadataId">
+          <End Type="RosterModel.ListMetadata" Role="ListMetadata" Multiplicity="1" />
+          <End Type="RosterModel.AccessControlItem" Role="AccessControlItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccessControlItem">
+              <PropertyRef Name="ListMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccessControlList_ListMetadataId">
+          <End Type="RosterModel.ListMetadata" Role="ListMetadata" Multiplicity="1" />
+          <End Type="RosterModel.AccessControlList" Role="AccessControlList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMetadata">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccessControlList">
+              <PropertyRef Name="ListMetadataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SqlServerAgent_JobList_Result">
+          <Property Type="Guid" Name="JobID" Nullable="false" />
+          <Property Type="String" Name="JobName" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="JobCategory" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="JobDescription" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="IsEnabled" Nullable="true" MaxLength="3" />
+          <Property Type="DateTime" Name="JobCreatedOn" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="JobLastModifiedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="OriginatingServerName" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="JobStartStepNo" Nullable="true" />
+          <Property Type="String" Name="JobStartStepName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="IsScheduled" Nullable="false" MaxLength="3" />
+          <Property Type="Guid" Name="JobScheduleID" Nullable="true" />
+          <Property Type="String" Name="JobScheduleName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="JobDeletionCriterion" Nullable="true" MaxLength="13" />
+          <Property Type="DateTime" Name="LastRunDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="LastRunStatus" Nullable="true" MaxLength="9" />
+          <Property Type="String" Name="LastRunDuration__HH_MM_SS_" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="LastRunStatusMessage" Nullable="true" MaxLength="4000" />
+          <Property Type="DateTime" Name="NextRunDateTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        <EntityType Name="RosterEventLock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WorkerPersonId" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vwEventStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwRosterEventTrackData">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="RosterEventId" />
+            <PropertyRef Name="CreatedOn" />
+            <PropertyRef Name="XmlContent" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="RosterEventId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="XmlContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="Int64" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RosterModelStoreContainer" CdmEntityContainer="RosterEntities">
+          <EntitySetMapping Name="Definitions">
+            <EntityTypeMapping TypeName="RosterModel.Definition">
+              <MappingFragment StoreEntitySet="Definition">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefTypes">
+            <EntityTypeMapping TypeName="RosterModel.DefType">
+              <MappingFragment StoreEntitySet="DefType">
+                <ScalarProperty Name="ReadOnly" ColumnName="ReadOnly" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RosterEvents">
+            <EntityTypeMapping TypeName="RosterModel.RosterEvent">
+              <MappingFragment StoreEntitySet="RosterEvent">
+                <ScalarProperty Name="EventTypeId" ColumnName="EventTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemOptions">
+            <EntityTypeMapping TypeName="RosterModel.SystemOption">
+              <MappingFragment StoreEntitySet="SystemOption">
+                <ScalarProperty Name="OptionValue" ColumnName="OptionValue" />
+                <ScalarProperty Name="OptionName" ColumnName="OptionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewMetadatas">
+            <EntityTypeMapping TypeName="RosterModel.ViewMetadata">
+              <MappingFragment StoreEntitySet="ViewMetadata">
+		<ScalarProperty Name="ExcludeFields" ColumnName="ExcludeFields" />
+                <ScalarProperty Name="StaticColourCodingSettings" ColumnName="StaticColourCodingSettings" />
+                <ScalarProperty Name="DynamicColourCodingSettings" ColumnName="DynamicColourCodingSettings" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="ItemLimit" ColumnName="ItemLimit" />
+                <ScalarProperty Name="CalendarScope" ColumnName="CalendarScope" />
+                <ScalarProperty Name="ViewData" ColumnName="ViewData" />
+                <ScalarProperty Name="DisplayType" ColumnName="DisplayType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ListMetadataId" ColumnName="ListMetadataId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewMetadataFields">
+            <EntityTypeMapping TypeName="RosterModel.ViewMetadataField">
+              <MappingFragment StoreEntitySet="ViewMetadataField">
+                <ScalarProperty Name="OrderCriteria" ColumnName="OrderCriteria" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="ListMetadataFieldId" ColumnName="ListMetadataFieldId" />
+                <ScalarProperty Name="ViewMetadataId" ColumnName="ViewMetadataId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewMetadataPopupSettings">
+            <EntityTypeMapping TypeName="RosterModel.ViewMetadataPopupSetting">
+              <MappingFragment StoreEntitySet="ViewMetadataPopupSetting">
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="ListMetadataFieldId" ColumnName="ListMetadataFieldId" />
+                <ScalarProperty Name="ViewMetadataId" ColumnName="ViewMetadataId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewMetadataWhereCriteries">
+            <EntityTypeMapping TypeName="RosterModel.ViewMetadataWhereCritery">
+              <MappingFragment StoreEntitySet="ViewMetadataWhereCritery">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ConcateOperator" ColumnName="ConcateOperator" />
+                <ScalarProperty Name="CompareType" ColumnName="CompareType" />
+                <ScalarProperty Name="ListMetadataFieldId" ColumnName="ListMetadataFieldId" />
+                <ScalarProperty Name="ViewMetadataId" ColumnName="ViewMetadataId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListMappings">
+            <EntityTypeMapping TypeName="RosterModel.ListMapping">
+              <MappingFragment StoreEntitySet="ListMapping">
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="ListName" ColumnName="ListName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListMappingFields">
+            <EntityTypeMapping TypeName="RosterModel.ListMappingField">
+              <MappingFragment StoreEntitySet="ListMappingField">
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ListMappingId" ColumnName="ListMappingId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListMetadataActions">
+            <EntityTypeMapping TypeName="RosterModel.ListMetadataAction">
+              <MappingFragment StoreEntitySet="ListMetadataAction">
+                <ScalarProperty Name="ContentTypeId" ColumnName="ContentTypeId" />
+                <ScalarProperty Name="AccessGroup" ColumnName="AccessGroup" />
+                <ScalarProperty Name="Command" ColumnName="Command" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LabelText" ColumnName="LabelText" />
+                <ScalarProperty Name="ListMetadataId" ColumnName="ListMetadataId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="RosterModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HolidayObserveds">
+            <EntityTypeMapping TypeName="RosterModel.HolidayObserved">
+              <MappingFragment StoreEntitySet="HolidayObserved">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="HolidayEventId" ColumnName="HolidayEventId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="RosterModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListMetadataFields">
+            <EntityTypeMapping TypeName="RosterModel.ListMetadataField">
+              <MappingFragment StoreEntitySet="ListMetadataField">
+                <ScalarProperty Name="ItemPosition" ColumnName="ItemPosition" />
+                <ScalarProperty Name="ControlProperties" ColumnName="ControlProperties" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="ReadOnly" ColumnName="ReadOnly" />
+                <ScalarProperty Name="Required" ColumnName="Required" />
+                <ScalarProperty Name="IsStatic" ColumnName="IsStatic" />
+                <ScalarProperty Name="DataSourceType" ColumnName="DataSourceType" />
+                <ScalarProperty Name="DataSourceField" ColumnName="DataSourceField" />
+                <ScalarProperty Name="DataSourceKey" ColumnName="DataSourceKey" />
+                <ScalarProperty Name="DataSource" ColumnName="DataSource" />
+                <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+                <ScalarProperty Name="FieldType" ColumnName="FieldType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="InternalName" ColumnName="InternalName" />
+                <ScalarProperty Name="ListMetadataId" ColumnName="ListMetadataId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListMetadatas">
+            <EntityTypeMapping TypeName="RosterModel.ListMetadata">
+              <MappingFragment StoreEntitySet="ListMetadata">
+                <ScalarProperty Name="DataSource" ColumnName="DataSource" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListMetadataContentTypes">
+            <EntityTypeMapping TypeName="RosterModel.ListMetadataContentType">
+              <MappingFragment StoreEntitySet="ListMetadataContentType">
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="IsOnNewAction" ColumnName="IsOnNewAction" />
+                <ScalarProperty Name="DispItemUrl" ColumnName="DispItemUrl" />
+                <ScalarProperty Name="EditItemUrl" ColumnName="EditItemUrl" />
+                <ScalarProperty Name="NewItemUrl" ColumnName="NewItemUrl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ListMetadataId" ColumnName="ListMetadataId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListMetadataFieldContentTypes">
+            <EntityTypeMapping TypeName="RosterModel.ListMetadataFieldContentType">
+              <MappingFragment StoreEntitySet="ListMetadataFieldContentType">
+                <ScalarProperty Name="ItemPosition" ColumnName="ItemPosition" />
+                <ScalarProperty Name="ListMetadataFieldId" ColumnName="ListMetadataFieldId" />
+                <ScalarProperty Name="ContentTypeId" ColumnName="ContentTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HolidayEvents">
+            <EntityTypeMapping TypeName="RosterModel.HolidayEvent">
+              <MappingFragment StoreEntitySet="HolidayEvent">
+                <ScalarProperty Name="Weekday" ColumnName="Weekday" />
+                <ScalarProperty Name="HolidayId" ColumnName="HolidayId" />
+                <ScalarProperty Name="HolidayDate" ColumnName="HolidayDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventStatuses">
+            <EntityTypeMapping TypeName="RosterModel.EventStatus">
+              <MappingFragment StoreEntitySet="EventStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Holidays">
+            <EntityTypeMapping TypeName="RosterModel.Holiday">
+              <MappingFragment StoreEntitySet="Holiday">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HolidayTypes">
+            <EntityTypeMapping TypeName="RosterModel.HolidayType">
+              <MappingFragment StoreEntitySet="HolidayType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccessControlItems">
+            <EntityTypeMapping TypeName="RosterModel.AccessControlItem">
+              <MappingFragment StoreEntitySet="AccessControlItem">
+                <ScalarProperty Name="AccessRight" ColumnName="AccessRight" />
+                <ScalarProperty Name="TrusteeId" ColumnName="TrusteeId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ListMetadataId" ColumnName="ListMetadataId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccessControlLists">
+            <EntityTypeMapping TypeName="RosterModel.AccessControlList">
+              <MappingFragment StoreEntitySet="AccessControlList">
+                <ScalarProperty Name="AccessRight" ColumnName="AccessRight" />
+                <ScalarProperty Name="TrusteeId" ColumnName="TrusteeId" />
+                <ScalarProperty Name="ListMetadataId" ColumnName="ListMetadataId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Holiday_PopulateNextYear" FunctionName="RosterModel.Store.Holiday_PopulateNextYear" />
+          <FunctionImportMapping FunctionImportName="RorterEvents_PlannedCreate" FunctionName="RosterModel.Store.RorterEvents_PlannedCreate" />
+          <FunctionImportMapping FunctionImportName="RorterEvents_TimesheetCreate" FunctionName="RosterModel.Store.RorterEvents_TimesheetCreate" />
+          <FunctionImportMapping FunctionImportName="SqlServerAgent_Status" FunctionName="RosterModel.Store.SqlServerAgent_Status" />
+          <FunctionImportMapping FunctionImportName="SqlServerAgent_JobList" FunctionName="RosterModel.Store.SqlServerAgent_JobList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RosterModel.SqlServerAgent_JobList_Result">
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="JobCategory" ColumnName="JobCategory" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="JobCreatedOn" ColumnName="JobCreatedOn" />
+                <ScalarProperty Name="JobLastModifiedOn" ColumnName="JobLastModifiedOn" />
+                <ScalarProperty Name="OriginatingServerName" ColumnName="OriginatingServerName" />
+                <ScalarProperty Name="JobStartStepNo" ColumnName="JobStartStepNo" />
+                <ScalarProperty Name="JobStartStepName" ColumnName="JobStartStepName" />
+                <ScalarProperty Name="IsScheduled" ColumnName="IsScheduled" />
+                <ScalarProperty Name="JobScheduleID" ColumnName="JobScheduleID" />
+                <ScalarProperty Name="JobScheduleName" ColumnName="JobScheduleName" />
+                <ScalarProperty Name="JobDeletionCriterion" ColumnName="JobDeletionCriterion" />
+                <ScalarProperty Name="LastRunDateTime" ColumnName="LastRunDateTime" />
+                <ScalarProperty Name="LastRunStatus" ColumnName="LastRunStatus" />
+                <ScalarProperty Name="LastRunDuration__HH_MM_SS_" ColumnName="LastRunDuration (HH:MM:SS)" />
+                <ScalarProperty Name="LastRunStatusMessage" ColumnName="LastRunStatusMessage" />
+                <ScalarProperty Name="NextRunDateTime" ColumnName="NextRunDateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="RosterEventLocks">
+            <EntityTypeMapping TypeName="RosterModel.RosterEventLock">
+              <MappingFragment StoreEntitySet="RosterEventLock">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="WorkerPersonId" ColumnName="WorkerPersonId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwEventStatus">
+            <EntityTypeMapping TypeName="RosterModel.vwEventStatu">
+              <MappingFragment StoreEntitySet="vwEventStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="RorterEvents_TimesheetCheckApprove" FunctionName="RosterModel.Store.RorterEvents_TimesheetCheckApprove" />
+          <FunctionImportMapping FunctionImportName="RorterEvents_TimesheetsCheckApprove" FunctionName="RosterModel.Store.RorterEvents_TimesheetsCheckApprove" />
+	  <FunctionImportMapping FunctionImportName="RosterEvents_SetProperties" FunctionName="RosterModel.Store.RosterEvents_SetProperties" />
+          <FunctionImportMapping FunctionImportName="RorterEvents_WorkingCreate" FunctionName="RosterModel.Store.RorterEvents_WorkingCreate" />
+          <EntitySetMapping Name="vwRosterEventTrackData">
+            <EntityTypeMapping TypeName="RosterModel.vwRosterEventTrackData">
+              <MappingFragment StoreEntitySet="vwRosterEventTrackData">
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="XmlContent" ColumnName="XmlContent" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="RosterEventId" ColumnName="RosterEventId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

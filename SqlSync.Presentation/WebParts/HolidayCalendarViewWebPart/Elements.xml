@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/" >
+  <Module Name="HolidayCalendarViewWebPart" List="113" Url="_catalogs/wp">
+    <File Path="HolidayCalendarViewWebPart\HolidayCalendarViewWebPart.webpart" Url="Roster.Presentation_HolidayCalendarViewWebPart.webpart" Type="GhostableInLibrary" >
+      <Property Name="Group" Value="TotalCalibration" />
+    </File>
+  </Module>
+</Elements>

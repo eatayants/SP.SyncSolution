@@ -1,0 +1,654 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5A1DCCEC-D347-491C-B1CF-7519533A656B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Roster.Presentation</RootNamespace>
+    <AssemblyName>Roster.Presentation</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SandboxedSolution>False</SandboxedSolution>
+    <TokenReplacementFileExtensions>svc</TokenReplacementFileExtensions>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <ActiveDeploymentConfiguration>No Activation</ActiveDeploymentConfiguration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Camlex.NET, Version=4.0.0.0, Culture=neutral, PublicKeyToken=831792d54d5285b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Camlex.NET.dll.4.0.0.0\lib\net20\Camlex.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.SharePoint.ApplicationPages">
+      <HintPath>..\..\..\..\inetpub\wwwroot\wss\VirtualDirectories\80\_app_bin\Microsoft.SharePoint.ApplicationPages.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Web.CommandUI, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\Common Files\Microsoft Shared\Web Server Extensions\15\ISAPI\Microsoft.Web.CommandUI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColourCoding\ColorInfo.cs" />
+    <Compile Include="ColourCoding\DynamicColourSettings.cs" />
+    <Compile Include="ColourCoding\DynamicCondition.cs" />
+    <Compile Include="ColourCoding\Recurrence\DateComparer.cs" />
+    <Compile Include="ColourCoding\Recurrence\ExpandedRosterEvent.cs" />
+    <Compile Include="ColourCoding\Recurrence\RecurrenceItemExpander.cs" />
+    <Compile Include="ColourCoding\Recurrence\RecurrenceRule.cs" />
+    <Compile Include="ColourCoding\Recurrence\RecurrenceTimeZoneConverter.cs" />
+    <Compile Include="Controls\CustomFields\RosterTableLookupField.cs" />
+    <Compile Include="Controls\FieldControls\DbUserControl.cs" />
+    <Compile Include="Controls\FieldEditors\DbFieldUserEditor.cs" />
+    <Compile Include="Controls\Fields\DbFieldUser.cs" />
+    <Compile Include="Controls\Interfaces\IStatusFilter.cs" />
+    <Compile Include="Controls\NAVproxy\CreateTimeSheetLines_Service.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Controls\NAVproxy\ProcessTimeSheets.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Controls\PlainLookupFieldTemplate.cs" />
+    <Compile Include="Controls\UserPickerEntity.cs" />
+    <Compile Include="Controls\WebPartConfigException.cs" />
+    <Compile Include="CONTROLTEMPLATES\RosterTableLookupFieldEditorControl.ascx.cs">
+      <DependentUpon>RosterTableLookupFieldEditorControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CONTROLTEMPLATES\RosterTableLookupFieldEditorControl.ascx.designer.cs">
+      <DependentUpon>RosterTableLookupFieldEditorControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Roster.BaseElements\Roster.EventReceiver.cs">
+      <DependentUpon>Roster.BaseElements.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\RoleService.cs" />
+    <Compile Include="Helpers\RosterClientContext.cs" />
+    <Compile Include="ColourCoding\StaticColourSettings.cs" />
+    <Compile Include="ColourCoding\StaticCondition.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Controls\DbNewItemButton.cs" />
+    <Compile Include="Controls\FieldControls\DbBaseFieldControl.cs" />
+    <Compile Include="Controls\FieldControls\DbGuidControl.cs" />
+    <Compile Include="Controls\FieldControls\DbBooleanControl.cs" />
+    <Compile Include="Controls\FieldControls\DbChoiceControl.cs" />
+    <Compile Include="Controls\FieldControls\DbDateTimeControl.cs" />
+    <Compile Include="Controls\FieldControls\DbLookupControl.cs" />
+    <Compile Include="Controls\FieldControls\DbNoteControl.cs" />
+    <Compile Include="Controls\FieldControls\DbNumberControl.cs" />
+    <Compile Include="Controls\FieldControls\DbRecurrenceControl.cs" />
+    <Compile Include="Controls\FieldControls\DbLabelControl.cs" />
+    <Compile Include="Controls\FieldControls\DbTextControl.cs" />
+    <Compile Include="Controls\FieldEditors\DbFieldBooleanEditor.cs" />
+    <Compile Include="Controls\FieldEditors\DbFieldChoiceEditor.cs" />
+    <Compile Include="Controls\FieldEditors\DbFieldDateTimeEditor.cs" />
+    <Compile Include="Controls\FieldEditors\DbFieldLookupEditor.cs" />
+    <Compile Include="Controls\FieldEditors\DbFieldNoteEditor.cs" />
+    <Compile Include="Controls\FieldEditors\DbFieldNumberEditor.cs" />
+    <Compile Include="Controls\FieldEditors\DbFieldRecurrenceEditor.cs" />
+    <Compile Include="Controls\FieldEditors\DbFieldGuidEditor.cs" />
+    <Compile Include="Controls\FieldEditors\DbFieldTextEditor.cs" />
+    <Compile Include="Controls\FieldEditors\IDbFieldEditor.cs" />
+    <Compile Include="Controls\Fields\DbField.cs" />
+    <Compile Include="Controls\Fields\DbFieldGuid.cs" />
+    <Compile Include="Controls\Fields\DbFieldBoolean.cs" />
+    <Compile Include="Controls\Fields\DbFieldChoice.cs" />
+    <Compile Include="Controls\Fields\DbFieldDateTime.cs" />
+    <Compile Include="Controls\Fields\DbFieldLookup.cs" />
+    <Compile Include="Controls\Fields\DbFieldNote.cs" />
+    <Compile Include="Controls\Fields\DbFieldNumber.cs" />
+    <Compile Include="Controls\Fields\DbFieldRecurrence.cs" />
+    <Compile Include="Controls\Fields\DbFieldLabel.cs" />
+    <Compile Include="Controls\Fields\DbFieldText.cs" />
+    <Compile Include="Controls\Interfaces\IRosterTemplateId.cs" />
+    <Compile Include="Controls\SPDropDownList.cs" />
+    <Compile Include="Controls\SPGridView2.cs" />
+    <Compile Include="Controls\SPGridView2DataSource.cs" />
+    <Compile Include="Controls\ToolParts\CreateTemplateToolPart.cs" />
+    <Compile Include="Controls\ToolParts\DbListViewToolPart.cs" />
+    <Compile Include="Controls\XofYPager.cs" />
+    <Compile Include="EventReceivers\SyncDataReceiver.cs" />
+    <Compile Include="Extensions\BLExtensions.cs" />
+    <Compile Include="Helpers\FieldFilterOperatorsLayer.cs" />
+    <Compile Include="Helpers\CamlFiltersLayer.cs" />
+    <Compile Include="Helpers\JsonTextWriter.cs" />
+    <Compile Include="Helpers\Utils.cs" />
+    <Compile Include="Helpers\EnumHelper.cs" />
+    <Compile Include="ISAPI\Roster.Services\BaseService.cs" />
+    <Compile Include="ISAPI\Roster.Services\ApiService.svc.cs">
+      <DependentUpon>ApiService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Group.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Enum.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\ISysMessage.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Entity.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Named.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Pager.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\QueryParams.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Search\abstractSearch.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Search\boolSearch.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Search\dateSearch.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Search\decimalSearch.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Search\extensionHelper.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Search\intSearch.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Search\entityExtension.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Search\searchExtension.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\Search\textSearch.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\SysMessage.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataContracts\View.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataHelpers.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataServiceContracts.cs" />
+    <Compile Include="ISAPI\Roster.Services\DataService.svc.cs">
+      <DependentUpon>DataService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ISAPI\Roster.Services\GeneralErrorHandler.cs" />
+    <Compile Include="ISAPI\Roster.Services\GeneralErrorFault.cs" />
+    <Compile Include="ISAPI\Roster.Services\GeneralServiceHost.cs" />
+    <Compile Include="ISAPI\Roster.Services\IApiService.cs" />
+    <Compile Include="ISAPI\Roster.Services\IDataService.cs" />
+    <Compile Include="ISAPI\Roster.Services\ITest.cs" />
+    <Compile Include="ISAPI\Roster.Services\GeneralServiceBehavior.cs" />
+    <Compile Include="ISAPI\Roster.Services\GeneralServiceHostFactory.cs" />
+    <Compile Include="ISAPI\Roster.Services\Test.svc.cs">
+      <DependentUpon>Test.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbContentTypeEdit.aspx.cs">
+      <DependentUpon>DbContentTypeEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbContentTypeEdit.aspx.designer.cs">
+      <DependentUpon>DbContentTypeEdit.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbContentTypeNew.aspx.cs">
+      <DependentUpon>DbContentTypeNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbContentTypeNew.aspx.designer.cs">
+      <DependentUpon>DbContentTypeNew.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbFldEdit.aspx.cs">
+      <DependentUpon>DbFldEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbFldEdit.aspx.designer.cs">
+      <DependentUpon>DbFldEdit.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbFldNew.aspx.cs">
+      <DependentUpon>DbFldNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbFldNew.aspx.designer.cs">
+      <DependentUpon>DbFldNew.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbListAddFieldToContentType.aspx.cs">
+      <DependentUpon>DbListAddFieldToContentType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbListAddFieldToContentType.aspx.designer.cs">
+      <DependentUpon>DbListAddFieldToContentType.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbListFieldsOrder.aspx.cs">
+      <DependentUpon>DbListFieldsOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbListFieldsOrder.aspx.designer.cs">
+      <DependentUpon>DbListFieldsOrder.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbListPermissions.aspx.cs">
+      <DependentUpon>DbListPermissions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbListPermissions.aspx.designer.cs">
+      <DependentUpon>DbListPermissions.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\HolidayFormPage.aspx.cs">
+      <DependentUpon>HolidayFormPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\HolidayFormPage.aspx.designer.cs">
+      <DependentUpon>HolidayFormPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\HolidayListPage.aspx.cs">
+      <DependentUpon>HolidayListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\HolidayListPage.aspx.designer.cs">
+      <DependentUpon>HolidayListPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\ListMigrationPage.aspx.cs">
+      <DependentUpon>ListMigrationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\ListMigrationPage.aspx.designer.cs">
+      <DependentUpon>ListMigrationPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\PublishingJobSetting.aspx.cs">
+      <DependentUpon>PublishingJobSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\PublishingJobSetting.aspx.designer.cs">
+      <DependentUpon>PublishingJobSetting.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\InplViewAdv.aspx.cs">
+      <DependentUpon>InplViewAdv.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\InplViewAdv.aspx.designer.cs">
+      <DependentUpon>InplViewAdv.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\RosterLockPage.aspx.cs">
+      <DependentUpon>RosterLockPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\RosterLockPage.aspx.designer.cs">
+      <DependentUpon>RosterLockPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\ServiceTestForm.aspx.cs">
+      <DependentUpon>ServiceTestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\ServiceTestForm.aspx.designer.cs">
+      <DependentUpon>ServiceTestForm.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbListForm.aspx.cs">
+      <DependentUpon>DbListForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbListForm.aspx.designer.cs">
+      <DependentUpon>DbListForm.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbListFromSettings.aspx.cs">
+      <DependentUpon>DbListFromSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbListFromSettings.aspx.designer.cs">
+      <DependentUpon>DbListFromSettings.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbViewEdit.aspx.cs">
+      <DependentUpon>DbViewEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbViewEdit.aspx.designer.cs">
+      <DependentUpon>DbViewEdit.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbViewNew.aspx.cs">
+      <DependentUpon>DbViewNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbViewNew.aspx.designer.cs">
+      <DependentUpon>DbViewNew.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbViewType.aspx.cs">
+      <DependentUpon>DbViewType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DbViewType.aspx.designer.cs">
+      <DependentUpon>DbViewType.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\ListColumnsMapperPage.aspx.cs">
+      <DependentUpon>ListColumnsMapperPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\ListColumnsMapperPage.aspx.designer.cs">
+      <DependentUpon>ListColumnsMapperPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\RosterSettingsMainPage.aspx.cs">
+      <DependentUpon>RosterSettingsMainPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\RosterSettingsMainPage.aspx.designer.cs">
+      <DependentUpon>RosterSettingsMainPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DatabaseSettingsPage.aspx.cs">
+      <DependentUpon>DatabaseSettingsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\DatabaseSettingsPage.aspx.designer.cs">
+      <DependentUpon>DatabaseSettingsPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\WebServiceSettingsPage.aspx.cs">
+      <DependentUpon>WebServiceSettingsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Roster.Presentation\WebServiceSettingsPage.aspx.designer.cs">
+      <DependentUpon>WebServiceSettingsPage.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebParts\AvailabilityButtonWebPart\AvailabilityButtonWebPart.cs" />
+    <Compile Include="WebParts\AvailabilityButtonWebPart\AvailabilityButtonWebPartUserControl.ascx.cs">
+      <DependentUpon>AvailabilityButtonWebPartUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebParts\AvailabilityButtonWebPart\AvailabilityButtonWebPartUserControl.ascx.designer.cs">
+      <DependentUpon>AvailabilityButtonWebPartUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebParts\ExternalListFormWebPart\ExternalListFormWebPart.cs" />
+    <Compile Include="WebParts\ExternalListFormWebPart\ExternalListFormWebPartUserControl.ascx.cs">
+      <DependentUpon>ExternalListFormWebPartUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebParts\ExternalListFormWebPart\ExternalListFormWebPartUserControl.ascx.designer.cs">
+      <DependentUpon>ExternalListFormWebPartUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebParts\ExternalListViewWebPart\ExternalListViewWebPart.cs" />
+    <Compile Include="WebParts\ExternalListViewWebPart\ExternalListViewWebPartUserControl.ascx.cs">
+      <DependentUpon>ExternalListViewWebPartUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebParts\ExternalListViewWebPart\ExternalListViewWebPartUserControl.ascx.designer.cs">
+      <DependentUpon>ExternalListViewWebPartUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebParts\HolidayCalendarViewWebPart\HolidayCalendarViewWebPart.cs" />
+    <Compile Include="WebParts\HolidayCalendarViewWebPart\HolidayCalendarViewWebPartUserControl.ascx.cs">
+      <DependentUpon>HolidayCalendarViewWebPartUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebParts\HolidayCalendarViewWebPart\HolidayCalendarViewWebPartUserControl.ascx.designer.cs">
+      <DependentUpon>HolidayCalendarViewWebPartUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebParts\MakeTemplateButtonWebPart\MakeTemplateButtonWebPart.cs" />
+    <Compile Include="WebParts\MakeTemplateButtonWebPart\MakeTemplateButtonWebPartUserControl.ascx.cs">
+      <DependentUpon>MakeTemplateButtonWebPartUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebParts\MakeTemplateButtonWebPart\MakeTemplateButtonWebPartUserControl.ascx.designer.cs">
+      <DependentUpon>MakeTemplateButtonWebPartUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebParts\ManagePermissionsWebPart\ManagePermissionsWebPart.cs" />
+    <Compile Include="WebParts\ManagePermissionsWebPart\ManagePermissionsWebPartUserControl.ascx.cs">
+      <DependentUpon>ManagePermissionsWebPartUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebParts\ManagePermissionsWebPart\ManagePermissionsWebPartUserControl.ascx.designer.cs">
+      <DependentUpon>ManagePermissionsWebPartUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebParts\ManagerViewFilterWebPart\ManagerViewFilterWebPart.cs" />
+    <Compile Include="WebParts\ManagerViewFilterWebPart\ManagerViewFilterWebPartUserControl.ascx.cs">
+      <DependentUpon>ManagerViewFilterWebPartUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebParts\ManagerViewFilterWebPart\ManagerViewFilterWebPartUserControl.ascx.designer.cs">
+      <DependentUpon>ManagerViewFilterWebPartUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebParts\TemplateSelectorWebPart\TemplateSelectorWebPart.cs" />
+    <Compile Include="WebParts\TemplateSelectorWebPart\TemplateSelectorWebPartUserControl.ascx.cs">
+      <DependentUpon>TemplateSelectorWebPartUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebParts\TemplateSelectorWebPart\TemplateSelectorWebPartUserControl.ascx.designer.cs">
+      <DependentUpon>TemplateSelectorWebPartUserControl.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebParts\VersionHistoryWebPart\VersionHistoryWebPart.cs" />
+    <Compile Include="WebParts\VersionHistoryWebPart\VersionHistoryWebPartUserControl.ascx.cs">
+      <DependentUpon>VersionHistoryWebPartUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebParts\VersionHistoryWebPart\VersionHistoryWebPartUserControl.ascx.designer.cs">
+      <DependentUpon>VersionHistoryWebPartUserControl.ascx.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="CONTROLTEMPLATES\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{04b308e6-1ef8-4aed-917c-7cbe09dc99f0}</SharePointProjectItemId>
+    </None>
+    <None Include="CustomActions\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c4d06a89-a76c-46d9-9283-7272fc99fe7c}</SharePointProjectItemId>
+    </None>
+    <None Include="Features\Roster.WebParts\Roster.WebParts.feature">
+      <FeatureId>{ff01598e-91ba-4b3c-a445-a13988f792cd}</FeatureId>
+    </None>
+    <None Include="Features\Roster.BaseElements\Roster.BaseElements.feature">
+      <FeatureId>{51574108-d959-4a6b-a798-6da3f40d271d}</FeatureId>
+    </None>
+    <None Include="Images\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{abe1083e-8c9d-4b63-b1c6-99af6ac58003}</SharePointProjectItemId>
+    </None>
+    <None Include="ISAPI\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{95f32a32-2a9d-4cdd-b58a-4ad261771382}</SharePointProjectItemId>
+    </None>
+    <None Include="key.snk" />
+    <None Include="Layouts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9f202cfd-9155-484a-8602-d47865533db9}</SharePointProjectItemId>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Package\Package.package">
+      <PackageId>{11098400-a7f6-4f7d-b933-15decc430000}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="WebParts\AvailabilityButtonWebPart\AvailabilityButtonWebPart.webpart" />
+    <None Include="WebParts\AvailabilityButtonWebPart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ea3837c5-81c9-4e69-9ef8-7c00d8610656}</SharePointProjectItemId>
+    </None>
+    <None Include="WebParts\ExternalListFormWebPart\ExternalListFormWebPart.webpart" />
+    <None Include="WebParts\ExternalListFormWebPart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4d0e778c-d28c-4957-8d89-47afb0e4af7d}</SharePointProjectItemId>
+    </None>
+    <None Include="WebParts\ExternalListViewWebPart\ExternalListViewWebPart.webpart" />
+    <None Include="WebParts\ExternalListViewWebPart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{e6dbbf7c-03eb-4001-b522-d61a3c555f7e}</SharePointProjectItemId>
+    </None>
+    <None Include="WebParts\HolidayCalendarViewWebPart\HolidayCalendarViewWebPart.webpart" />
+    <None Include="WebParts\HolidayCalendarViewWebPart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3b7f6247-732a-4318-9037-81dcb372faf0}</SharePointProjectItemId>
+    </None>
+    <None Include="WebParts\MakeTemplateButtonWebPart\MakeTemplateButtonWebPart.webpart" />
+    <None Include="WebParts\MakeTemplateButtonWebPart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{606d90d3-421e-4e05-b04c-685b82420882}</SharePointProjectItemId>
+    </None>
+    <None Include="WebParts\ManagePermissionsWebPart\ManagePermissionsWebPart.webpart" />
+    <None Include="WebParts\ManagePermissionsWebPart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ecbc9339-c79c-4d35-9d60-841eddac2d22}</SharePointProjectItemId>
+    </None>
+    <None Include="WebParts\ManagerViewFilterWebPart\ManagerViewFilterWebPart.webpart" />
+    <None Include="WebParts\ManagerViewFilterWebPart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d710c013-043d-426f-a83e-a77fee90b4aa}</SharePointProjectItemId>
+    </None>
+    <None Include="WebParts\TemplateSelectorWebPart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{7c9bd5b9-0ba8-460a-9952-8207b2eeda2d}</SharePointProjectItemId>
+    </None>
+    <None Include="WebParts\TemplateSelectorWebPart\TemplateSelectorWebPart.webpart" />
+    <None Include="WebParts\VersionHistoryWebPart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{cff69577-5eca-4715-aaa1-cf38d7f9be9f}</SharePointProjectItemId>
+    </None>
+    <None Include="WebParts\VersionHistoryWebPart\VersionHistoryWebPart.webpart" />
+    <None Include="XML\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{06dd25d9-0904-487b-826f-d9a7bb29e3ce}</SharePointProjectItemId>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CONTROLTEMPLATES\RosterTableLookupFieldControl.ascx" />
+    <Content Include="CONTROLTEMPLATES\RosterTableLookupFieldEditorControl.ascx" />
+    <Content Include="CustomActions\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Features\Roster.WebParts\Roster.WebParts.Template.xml">
+      <DependentUpon>Roster.WebParts.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Roster.BaseElements\Roster.BaseElements.Template.xml">
+      <DependentUpon>Roster.BaseElements.feature</DependentUpon>
+    </Content>
+    <Content Include="Images\Roster.Presentation\copyTemplate_32.png" />
+    <Content Include="Images\Roster.Presentation\approve_32.png" />
+    <Content Include="Images\Roster.Presentation\sendToNav_32.png" />
+    <Content Include="Images\Roster.Presentation\saveTemplate_32.png" />
+    <Content Include="Images\Roster.Presentation\terminate_32.png" />
+    <Content Include="Images\Roster.Presentation\datepicker\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Images\Roster.Presentation\datepicker\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Images\Roster.Presentation\datepicker\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Images\Roster.Presentation\datepicker\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Images\Roster.Presentation\datepicker\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Images\Roster.Presentation\datepicker\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Images\Roster.Presentation\datepicker\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Images\Roster.Presentation\datepicker\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Images\Roster.Presentation\datepicker\ui-icons_222222_256x240.png" />
+    <Content Include="Images\Roster.Presentation\datepicker\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Images\Roster.Presentation\datepicker\ui-icons_454545_256x240.png" />
+    <Content Include="Images\Roster.Presentation\datepicker\ui-icons_888888_256x240.png" />
+    <Content Include="Images\Roster.Presentation\datepicker\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Images\Roster.Presentation\editItem_32.png" />
+    <Content Include="Images\Roster.Presentation\mngPermissions_32.png" />
+    <Content Include="Images\Roster.Presentation\hs.png" />
+    <Content Include="Images\Roster.Presentation\hv.png" />
+    <Content Include="Images\Roster.Presentation\workers_32.png" />
+    <Content Include="ISAPI\Roster.Services\ApiService.svc" />
+    <Content Include="ISAPI\Roster.Services\DataService.svc" />
+    <Content Include="ISAPI\Roster.Services\Test.svc" />
+    <Content Include="Layouts\Roster.Presentation\DbContentTypeEdit.aspx" />
+    <Content Include="Layouts\Roster.Presentation\DbContentTypeNew.aspx" />
+    <Content Include="Layouts\Roster.Presentation\DbFldEdit.aspx" />
+    <Content Include="Layouts\Roster.Presentation\DbFldNew.aspx" />
+    <Content Include="Layouts\Roster.Presentation\DbListAddFieldToContentType.aspx" />
+    <Content Include="Layouts\Roster.Presentation\DbListFieldsOrder.aspx" />
+    <Content Include="Layouts\Roster.Presentation\DbListPermissions.aspx" />
+    <Content Include="Layouts\Roster.Presentation\HolidayFormPage.aspx" />
+    <Content Include="Layouts\Roster.Presentation\InplViewAdv.aspx" />
+    <Content Include="Layouts\Roster.Presentation\js\customActions.model.js" />
+    <Content Include="Layouts\Roster.Presentation\js\handsontable.full.js" />
+    <Content Include="Layouts\Roster.Presentation\js\handsontable.full.min.css" />
+    <Content Include="Layouts\Roster.Presentation\js\handsontable.full.min.js" />
+    <Content Include="Layouts\Roster.Presentation\js\jquery-ui.datepicker.min.css" />
+    <Content Include="Layouts\Roster.Presentation\js\jquery-ui.datepicker.min.js" />
+    <Content Include="Layouts\Roster.Presentation\js\jquery-ui.progressbar.min.css" />
+    <Content Include="Layouts\Roster.Presentation\js\jquery-ui.progressbar.min.js" />
+    <Content Include="Layouts\Roster.Presentation\js\jquery.contextMenu.css" />
+    <Content Include="Layouts\Roster.Presentation\js\jquery.contextMenu.js" />
+    <Content Include="Layouts\Roster.Presentation\js\moment.js" />
+    <Content Include="Layouts\Roster.Presentation\js\PageComponent.js" />
+    <Content Include="Layouts\Roster.Presentation\js\pikaday.css" />
+    <Content Include="Layouts\Roster.Presentation\js\pikaday.js" />
+    <Content Include="Layouts\Roster.Presentation\js\quickEdit.js" />
+    <Content Include="Layouts\Roster.Presentation\js\replace_link.js" />
+    <Content Include="Layouts\Roster.Presentation\js\Roster.Common.js" />
+    <Content Include="Layouts\Roster.Presentation\js\Roster.CustomActions.js" />
+    <Content Include="Layouts\Roster.Presentation\js\handsontable.editors.custom.js" />
+    <Content Include="Layouts\Roster.Presentation\js\RosterTableLookupField.js" />
+    <Content Include="Layouts\Roster.Presentation\js\templates.selector.js" />
+    <Content Include="Layouts\Roster.Presentation\js\tooltips.manager.js" />
+    <Content Include="Layouts\Roster.Presentation\HolidayListPage.aspx" />
+    <Content Include="Layouts\Roster.Presentation\js\underscore-min.js" />
+    <Content Include="Layouts\Roster.Presentation\ListMigrationPage.aspx" />
+    <Content Include="Layouts\Roster.Presentation\PublishingJobSetting.aspx" />
+    <Content Include="Layouts\Roster.Presentation\RosterLockPage.aspx" />
+    <Content Include="Layouts\Roster.Presentation\ServiceTestForm.aspx" />
+    <Content Include="Layouts\Roster.Presentation\DbListForm.aspx" />
+    <Content Include="Layouts\Roster.Presentation\DbListFromSettings.aspx" />
+    <Content Include="Layouts\Roster.Presentation\DbViewEdit.aspx" />
+    <Content Include="Layouts\Roster.Presentation\DbViewNew.aspx" />
+    <Content Include="Layouts\Roster.Presentation\DbViewType.aspx" />
+    <Content Include="Layouts\Roster.Presentation\js\cascadeSelection.view.js" />
+    <Content Include="Layouts\Roster.Presentation\js\jquery-2.1.1.min.js" />
+    <Content Include="Layouts\Roster.Presentation\js\jscolor.js" />
+    <Content Include="Layouts\Roster.Presentation\js\knockout-3.1.0.js" />
+    <Content Include="Layouts\Roster.Presentation\js\linq.min.js" />
+    <Content Include="Layouts\Roster.Presentation\js\colour_coding.model.js" />
+    <Content Include="Layouts\Roster.Presentation\js\overwrite.standard.functions.js" />
+    <Content Include="Layouts\Roster.Presentation\ListColumnsMapperPage.aspx" />
+    <Content Include="Layouts\Roster.Presentation\js\select2.min.css" />
+    <Content Include="Layouts\Roster.Presentation\js\select2.min.js" />
+    <Content Include="Layouts\Roster.Presentation\RosterSettingsMainPage.aspx" />
+    <Content Include="Layouts\Roster.Presentation\DatabaseSettingsPage.aspx" />
+    <Content Include="Layouts\Roster.Presentation\WebServiceSettingsPage.aspx" />
+    <Content Include="WebParts\AvailabilityButtonWebPart\AvailabilityButtonWebPartUserControl.ascx" />
+    <Content Include="WebParts\AvailabilityButtonWebPart\Elements.xml" />
+    <Content Include="WebParts\ExternalListFormWebPart\Elements.xml" />
+    <Content Include="WebParts\ExternalListFormWebPart\ExternalListFormWebPartUserControl.ascx" />
+    <Content Include="WebParts\ExternalListViewWebPart\Elements.xml" />
+    <Content Include="WebParts\ExternalListViewWebPart\ExternalListViewWebPartUserControl.ascx" />
+    <Content Include="WebParts\HolidayCalendarViewWebPart\Elements.xml" />
+    <Content Include="WebParts\HolidayCalendarViewWebPart\HolidayCalendarViewWebPartUserControl.ascx" />
+    <Content Include="WebParts\MakeTemplateButtonWebPart\Elements.xml" />
+    <Content Include="WebParts\MakeTemplateButtonWebPart\MakeTemplateButtonWebPartUserControl.ascx" />
+    <Content Include="WebParts\ManagePermissionsWebPart\Elements.xml" />
+    <Content Include="WebParts\ManagePermissionsWebPart\ManagePermissionsWebPartUserControl.ascx" />
+    <Content Include="WebParts\ManagerViewFilterWebPart\Elements.xml" />
+    <Content Include="WebParts\ManagerViewFilterWebPart\ManagerViewFilterWebPartUserControl.ascx" />
+    <Content Include="WebParts\TemplateSelectorWebPart\Elements.xml" />
+    <Content Include="WebParts\TemplateSelectorWebPart\TemplateSelectorWebPartUserControl.ascx" />
+    <Content Include="WebParts\VersionHistoryWebPart\Elements.xml" />
+    <Content Include="WebParts\VersionHistoryWebPart\VersionHistoryWebPartUserControl.ascx" />
+    <Content Include="XML\fldtypes_Roster.Presentation.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Roster.BL\Roster.BL.csproj">
+      <Project>{90126ca3-3475-4b12-8d64-05b32defec6a}</Project>
+      <Name>Roster.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Roster.Common\Roster.Common.csproj">
+      <Project>{0274ea17-bcc1-4c07-9c64-0e34c8e42f6c}</Project>
+      <Name>Roster.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Roster.Model\Roster.Model.csproj">
+      <Project>{97a7a625-58d4-446d-90ee-b8eca43fbe10}</Project>
+      <Name>Roster.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FieldTypes>
+  <FieldType>
+    <Field Name="TypeName">RosterTableLookupField</Field>
+    <Field Name="TypeDisplayName">Roster Database Lookup</Field>
+    <Field Name="TypeShortDescription">Lookup (information already in Roster Database)</Field>
+    <Field Name="ParentType">Text</Field>
+    <Field Name="UserCreatable">TRUE</Field>
+    <Field Name="Sortable">FALSE</Field>
+    <Field Name="Filterable">FALSE</Field>
+    <Field Name="FieldTypeClass">Roster.Presentation.Controls.CustomFields.RosterTableLookupField, $SharePoint.Project.AssemblyFullName$</Field>
+    <Field Name="FieldEditorUserControl">/_controltemplates/15/RosterTableLookupFieldEditorControl.ascx</Field>
+    <PropertySchema>
+      <Fields>
+        <Field Name="DataSourceType" DisplayName="Data source type" Type="Text" Hidden="true"></Field>
+        <Field Name="TableName" DisplayName="Data souce" Type="Text" Hidden="true"></Field>
+        <Field Name="KeyName" DisplayName="Data souce key column" Type="Text" Hidden="true"></Field>
+        <Field Name="FieldName" DisplayName="Data souce column to display" Type="Text" Hidden="true"></Field>
+      </Fields>
+    </PropertySchema>
+  </FieldType>
+</FieldTypes>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.VisualWebPart" DefaultFile="ExternalListFormWebPartUserControl.ascx" SupportedTrustLevels="FullTrust" SupportedDeploymentScopes="Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="ExternalListFormWebPart\" Type="ElementManifest" />
+    <ProjectItemFile Source="ExternalListFormWebPart.webpart" Target="ExternalListFormWebPart\" Type="ElementFile" />
+    <ProjectItemFile Source="ExternalListFormWebPartUserControl.ascx" Target="CONTROLTEMPLATES\Roster.Presentation.WebParts\ExternalListFormWebPart\" Type="TemplateFile" />
+  </Files>
+  <SafeControls>
+    <SafeControl Name="SafeControlEntry1" Assembly="$SharePoint.Project.AssemblyFullName$" Namespace="Roster.Presentation.WebParts.ExternalListFormWebPart" TypeName="*" IsSafe="true" IsSafeAgainstScript="false" />
+  </SafeControls>
+</ProjectItem>

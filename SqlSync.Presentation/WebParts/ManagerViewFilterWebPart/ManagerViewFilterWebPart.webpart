@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<webParts>
+  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+    <metaData>
+      <type name="Roster.Presentation.WebParts.ManagerViewFilterWebPart.ManagerViewFilterWebPart, $SharePoint.Project.AssemblyFullName$" />
+      <importErrorMessage>$Resources:core,ImportErrorMessage;</importErrorMessage>
+    </metaData>
+    <data>
+      <properties>
+        <property name="Title" type="string">Roster.Presentation - Manager View Filter</property>
+        <property name="Description" type="string">Use this web part together with Timesheets Calendar view</property>
+      </properties>
+    </data>
+  </webPart>
+</webParts>

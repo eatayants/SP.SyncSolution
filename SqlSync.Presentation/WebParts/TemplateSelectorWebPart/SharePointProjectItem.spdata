@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.VisualWebPart" DefaultFile="TemplateSelectorWebPartUserControl.ascx" SupportedTrustLevels="FullTrust" SupportedDeploymentScopes="Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="TemplateSelectorWebPart\" Type="ElementManifest" />
+    <ProjectItemFile Source="TemplateSelectorWebPart.webpart" Target="TemplateSelectorWebPart\" Type="ElementFile" />
+    <ProjectItemFile Source="TemplateSelectorWebPartUserControl.ascx" Target="CONTROLTEMPLATES\Roster.Presentation.WebParts\TemplateSelectorWebPart\" Type="TemplateFile" />
+  </Files>
+  <SafeControls>
+    <SafeControl Name="SafeControlEntry1" Assembly="$SharePoint.Project.AssemblyFullName$" Namespace="Roster.Presentation.WebParts.TemplateSelectorWebPart" TypeName="*" IsSafe="true" IsSafeAgainstScript="false" />
+  </SafeControls>
+</ProjectItem>

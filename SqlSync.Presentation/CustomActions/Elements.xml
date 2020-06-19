@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+  <CustomAction
+    ScriptSrc="/_layouts/15/Roster.Presentation/js/Roster.Common.js?rev=20161122"
+    Location="ScriptLink"
+    Sequence="1001">
+  </CustomAction>
+  <CustomAction
+    ScriptSrc="/_layouts/15/Roster.Presentation/js/Roster.CustomActions.js?rev=201703092"
+    Location="ScriptLink"
+    Sequence="1002">
+  </CustomAction>
+  
+  <CustomActionGroup
+    Description="Group for customize Roster structure"
+    Id="TC.Roster.RosterSettings"
+    Location="Microsoft.SharePoint.SiteSettings"
+    Sequence="100"
+    Title="Rosters">
+  </CustomActionGroup>
+  
+  <CustomAction
+    GroupId="TC.Roster.RosterSettings"
+    Id="TC.Roster.RosterSettings.PlannedRosterSettings"
+    Location="Microsoft.SharePoint.SiteSettings"
+    Sequence="12"
+    Title="Planned Roster settings">
+    <UrlAction Url="~site/_layouts/15/Roster.Presentation/RosterSettingsMainPage.aspx?List=%7B5B7156BB%2D84A5%2D4F8C%2DAE2B%2DBCDE4ED9C486%7D" />
+  </CustomAction>
+  <CustomAction
+    GroupId="TC.Roster.RosterSettings"
+    Id="TC.Roster.RosterSettings.WorkingRosterSettings"
+    Location="Microsoft.SharePoint.SiteSettings"
+    Sequence="13"
+    Title="Working Roster settings">
+    <UrlAction Url="~site/_layouts/15/Roster.Presentation/RosterSettingsMainPage.aspx?List=%7B23E6F5B9%2D1843%2D4F9B%2DAAAB%2D20F45EBB946B%7D" />
+  </CustomAction>
+  <CustomAction
+    GroupId="TC.Roster.RosterSettings"
+    Id="TC.Roster.RosterSettings.TimesheetRosterSettings"
+    Location="Microsoft.SharePoint.SiteSettings"
+    Sequence="14"
+    Title="Timesheet Roster settings">
+    <UrlAction Url="~site/_layouts/15/Roster.Presentation/RosterSettingsMainPage.aspx?List=%7B45C78A04%2D4725%2D4B07%2D8AFA%2DA638670C080E%7D" />
+  </CustomAction>
+  <CustomAction
+    GroupId="TC.Roster.RosterSettings"
+    Id="TC.Roster.RosterSettings.HolidayListPage"
+    Location="Microsoft.SharePoint.SiteSettings"
+    Sequence="304"
+    Title="Holiday List">
+    <UrlAction Url="~site/_layouts/15/Roster.Presentation/HolidayListPage.aspx?Source={Source}" />
+  </CustomAction>
+  <CustomAction
+    GroupId="TC.Roster.RosterSettings"
+    Id="TC.Roster.RosterSettings.PublishingJobSetting"
+    Location="Microsoft.SharePoint.SiteSettings"
+    Sequence="303"
+    Title="Publishing Job Setting">
+    <UrlAction Url="~site/_layouts/15/Roster.Presentation/PublishingJobSetting.aspx?Source={Source}" />
+  </CustomAction>
+  <CustomAction
+    GroupId="TC.Roster.RosterSettings"
+    Id="TC.Roster.RosterSettings.RosterDatabaseSetting"
+    Location="Microsoft.SharePoint.SiteSettings"
+    Sequence="305"
+    Title="Database settings">
+    <UrlAction Url="~site/_layouts/15/Roster.Presentation/DatabaseSettingsPage.aspx?Source={Source}" />
+  </CustomAction>
+  <CustomAction
+    GroupId="TC.Roster.RosterSettings"
+    Id="TC.Roster.RosterSettings.RosterNAVwebServiceSetting"
+    Location="Microsoft.SharePoint.SiteSettings"
+    Sequence="306"
+    Title="NAV web service settings">
+    <UrlAction Url="~site/_layouts/15/Roster.Presentation/WebServiceSettingsPage.aspx?Source={Source}" />
+  </CustomAction>
+  <CustomAction
+    Id="TC.Roster.ListColumnsMapper"
+    RegistrationType="List"
+    RegistrationId="100"
+    GroupId="GeneralSettings"
+    Location="Microsoft.SharePoint.ListEdit"
+    RequireSiteAdministrator="FALSE"
+    Sequence="303"
+    Title="Map fields to DB table columns">
+    <UrlAction Url="~site/_layouts/15/Roster.Presentation/ListColumnsMapperPage.aspx?List={ListId}"/>
+  </CustomAction>
+  <CustomAction
+    GroupId="TC.Roster.RosterSettings"
+    Id="TC.Roster.RosterSettings.BulkLockWorkingRosters"
+    Location="Microsoft.SharePoint.SiteSettings"
+    Sequence="307"
+    RequireSiteAdministrator="TRUE"
+    Title="Bulk lock Working rosters">
+    <UrlAction Url="~site/_layouts/15/Roster.Presentation/RosterLockPage.aspx" />
+  </CustomAction>
+  <CustomAction
+    GroupId="TC.Roster.RosterSettings"
+    Id="TC.Roster.RosterSettings.PlannedRosterSettings"
+    Location="Microsoft.SharePoint.SiteSettings"
+    Sequence="308"
+    Title="Status View settings">
+    <UrlAction Url="~site/_layouts/15/Roster.Presentation/RosterSettingsMainPage.aspx?List=%7B4F3DAA18%2D1BA5%2D4889%2DA277%2D4D3FB8A660E1%7D" />
+  </CustomAction>
+  <CustomAction
+    GroupId="TC.Roster.RosterSettings"
+    Id="TC.Roster.RosterSettings.MigrationPage"
+    Location="Microsoft.SharePoint.SiteSettings"
+    Sequence="309"
+    RequireSiteAdministrator="TRUE"
+    Title="Migrate List to Roster DB">
+    <UrlAction Url="~site/_layouts/15/Roster.Presentation/ListMigrationPage.aspx?Source={Source}" />
+  </CustomAction>
+
+  <!--
+  <CustomAction
+    Id="TC.Roster.SaveAsTemplate"
+    RegistrationType="List"
+    RegistrationId="100"
+    Location="CommandUI.Ribbon.DisplayForm"
+    Rights="ViewListItems">
+    <CommandUIExtension>
+      <CommandUIDefinitions>
+        <CommandUIDefinition Location="Ribbon.ListForm.Display.Actions.Controls._children">
+          <Button
+           Id="TC.Roster.SaveAsTemplate.Button"
+           Alt=""
+           Sequence="10001"
+           Image32by32="/_layouts/15/images/Roster.Presentation/saveTemplate_32.png"
+           Image16by16="/_layouts/15/images/ITTHGBRG.GIF"
+           Command="TCRosterSaveAsTemplate"
+           LabelText="Save as template"
+           TemplateAlias="o1"
+           CommandType="General"/>
+        </CommandUIDefinition>
+      </CommandUIDefinitions>
+      <CommandUIHandlers>
+        <CommandUIHandler
+         Command="TCRosterSaveAsTemplate"
+         CommandAction="javascript:Roster.CustomActions.SaveAsTemplate('Scheduled Shifts Owners');" />
+      </CommandUIHandlers>
+    </CommandUIExtension>
+  </CustomAction>
+  <CustomAction
+    Id="TC.Roster.CopyFromTemplate"
+    RegistrationType="List"
+    RegistrationId="100"
+    Location="CommandUI.Ribbon.DisplayForm"
+    Rights="ViewListItems">
+    <CommandUIExtension>
+      <CommandUIDefinitions>
+        <CommandUIDefinition Location="Ribbon.ListForm.Display.Actions.Controls._children">
+          <Button
+           Id="TC.Roster.CopyFromTemplate.Button"
+           Alt=""
+           Sequence="10002"
+           Image32by32="/_layouts/15/images/Roster.Presentation/copyTemplate_32.png"
+           Image16by16="/_layouts/15/images/ITTHGBRG.GIF"
+           Command="TCRosterCopyFromTemplate"
+           LabelText="Copy from template"
+           TemplateAlias="o1"
+           CommandType="General"/>
+        </CommandUIDefinition>
+      </CommandUIDefinitions>
+      <CommandUIHandlers>
+        <CommandUIHandler
+         Command="TCRosterCopyFromTemplate"
+         CommandAction="javascript:Roster.CustomActions.CopyFromTemplate();"  />
+      </CommandUIHandlers>
+    </CommandUIExtension>
+  </CustomAction>
+  <CustomAction
+    Id="TC.Roster.TerminateMasterRoster"
+    RegistrationType="List"
+    RegistrationId="100"
+    Location="CommandUI.Ribbon.DisplayForm"
+    Rights="ViewListItems">
+    <CommandUIExtension>
+      <CommandUIDefinitions>
+        <CommandUIDefinition Location="Ribbon.ListForm.Display.Actions.Controls._children">
+          <Button
+           Id="TC.Roster.TerminateMasterRoster.Button"
+           Alt=""
+           Sequence="10002"
+           Image32by32="/_layouts/15/images/roster.presentation/terminate_32.png"
+           Image16by16="/_layouts/15/images/ITTHGBRG.GIF"
+           Command="TCRosterTerminateMasterRoster"
+           LabelText="Terminate"
+           TemplateAlias="o1"
+           CommandType="General"/>
+        </CommandUIDefinition>
+      </CommandUIDefinitions>
+      <CommandUIHandlers>
+        <CommandUIHandler
+         Command="TCRosterTerminateMasterRoster"
+         CommandAction="javascript:Roster.CustomActions.TerminateRoster();"  />
+      </CommandUIHandlers>
+    </CommandUIExtension>
+  </CustomAction>
+  <CustomAction
+    Id="TC.Roster.PublishMasterRoster"
+    RegistrationType="List"
+    RegistrationId="100"
+    Location="CommandUI.Ribbon.DisplayForm"
+    Rights="ViewListItems">
+    <CommandUIExtension>
+      <CommandUIDefinitions>
+        <CommandUIDefinition Location="Ribbon.ListForm.Display.Actions.Controls._children">
+          <Button
+           Id="TC.Roster.PublishMasterRoster.Button"
+           Alt=""
+           Sequence="10002"
+           Image32by32="/_layouts/15/images/menuuploaddocument.gif"
+           Image16by16="/_layouts/15/images/ITTHGBRG.GIF"
+           Command="TCRosterPublishMasterRoster"
+           LabelText="Publish"
+           TemplateAlias="o1"
+           CommandType="General"/>
+        </CommandUIDefinition>
+      </CommandUIDefinitions>
+      <CommandUIHandlers>
+        <CommandUIHandler
+         Command="TCRosterPublishMasterRoster"
+         CommandAction="javascript:Roster.CustomActions.PublishPlannedRoster(7);"  />
+      </CommandUIHandlers>
+    </CommandUIExtension>
+  </CustomAction>
+-->
+</Elements>

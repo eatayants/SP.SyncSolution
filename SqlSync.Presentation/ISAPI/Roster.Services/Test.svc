@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Roster.Services.Test, $SharePoint.Project.AssemblyFullName$"  CodeBehind="Test.svc.cs"
+Factory="Roster.Services.GeneralServiceHostFactory, $SharePoint.Project.AssemblyFullName$" %>

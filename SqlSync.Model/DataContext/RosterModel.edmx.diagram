@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7a60f23613bb4245b0ef2f4e01cf8753" Name="Roster" ZoomLevel="94">
+        <EntityTypeShape EntityType="RosterModel.Definition" Width="1.5" PointX="7.25" PointY="2.875" />
+        <EntityTypeShape EntityType="RosterModel.DefType" Width="1.5" PointX="4.875" PointY="2.875" />
+        <EntityTypeShape EntityType="RosterModel.RosterEvent" PointX="0.5" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="RosterModel.SystemOption" Width="1.5" PointX="0.5" PointY="3.125" />
+        <EntityTypeShape EntityType="RosterModel.ViewMetadata" Width="1.5" PointX="2.875" PointY="9" />
+        <EntityTypeShape EntityType="RosterModel.ViewMetadataField" Width="1.5" PointX="5.125" PointY="6.625" />
+        <EntityTypeShape EntityType="RosterModel.ViewMetadataPopupSetting" Width="1.5" PointX="5.125" PointY="10.875" />
+        <EntityTypeShape EntityType="RosterModel.ViewMetadataWhereCritery" Width="1.5" PointX="7.875" PointY="6.625" />
+        <AssociationConnector Association="RosterModel.FK_Definition_TypeId" />
+        <AssociationConnector Association="RosterModel.FK_ViewMetadataField_ViewMetadataId" />
+        <AssociationConnector Association="RosterModel.FK_ViewMetadataPopupSetting_ViewMetadataId" />
+        <AssociationConnector Association="RosterModel.FK_ViewMetadataWhereCritery_ViewMetadataId" />
+        <EntityTypeShape EntityType="RosterModel.ListMapping" Width="1.5" PointX="8.125" PointY="10.875" />
+        <EntityTypeShape EntityType="RosterModel.ListMappingField" Width="1.5" PointX="10.375" PointY="10.75" />
+        <AssociationConnector Association="RosterModel.FK_ListMappingField_ListMappingId" />
+        <EntityTypeShape EntityType="RosterModel.ListMetadataAction" Width="1.5" PointX="0.5" PointY="9" />
+        <EntityTypeShape EntityType="RosterModel.City" Width="1.5" PointX="12.875" PointY="6.75" />
+        <EntityTypeShape EntityType="RosterModel.HolidayObserved" Width="1.5" PointX="12.125" PointY="4" />
+        <EntityTypeShape EntityType="RosterModel.State" Width="1.5" PointX="10.625" PointY="6.625" />
+        <AssociationConnector Association="RosterModel.FK_City_StateId" />
+        <AssociationConnector Association="RosterModel.FK_HolidayObserved_StateId" />
+        <EntityTypeShape EntityType="RosterModel.ListMetadataField" Width="1.5" PointX="2.875" PointY="3.125" />
+        <AssociationConnector Association="RosterModel.FK_ViewMetadataField_ListMetadataFieldId" />
+        <AssociationConnector Association="RosterModel.FK_ViewMetadataPopupSetting_ListMetadataFieldId" />
+        <AssociationConnector Association="RosterModel.FK_ViewMetadataWhereCritery_ListMetadataFieldId" />
+        <EntityTypeShape EntityType="RosterModel.ListMetadata" Width="1.5" PointX="0.5" PointY="5.125" />
+        <EntityTypeShape EntityType="RosterModel.ListMetadataContentType" Width="1.5" PointX="0.625" PointY="12.625" />
+        <EntityTypeShape EntityType="RosterModel.ListMetadataFieldContentType" Width="1.5" PointX="2.75" PointY="13.375" />
+        <AssociationConnector Association="RosterModel.FK_ListMetadataAction_ListMetadataId" />
+        <AssociationConnector Association="RosterModel.FK_ListMetadataContentType_ListMetadataId" />
+        <AssociationConnector Association="RosterModel.FK_ListMetadataField_ListMetadataId" />
+        <AssociationConnector Association="RosterModel.FK_ViewMetadata_ListMetadataId" />
+        <AssociationConnector Association="RosterModel.FK_ListMetadataFieldContentType_ContentTypeId" />
+        <AssociationConnector Association="RosterModel.FK_ListMetadataFieldContentType_ListMetadataFieldId" />
+        <AssociationConnector Association="RosterModel.FK_ListMetadataAction_ContentTypeId" />
+        <EntityTypeShape EntityType="RosterModel.HolidayEvent" Width="1.5" PointX="14.125" PointY="2.5" />
+        <AssociationConnector Association="RosterModel.FK_HolidayObserved_HolidayEventId" />
+        <EntityTypeShape EntityType="RosterModel.EventStatus" Width="1.5" PointX="2.875" PointY="0.75" />
+        <EntityTypeShape EntityType="RosterModel.Holiday" Width="1.5" PointX="12" PointY="1.5" />
+        <EntityTypeShape EntityType="RosterModel.HolidayType" Width="1.5" PointX="9.75" PointY="3" />
+        <AssociationConnector Association="RosterModel.FK_Holiday_TypeId" />
+        <AssociationConnector Association="RosterModel.FK_HolidayEvent_HolidayId" />
+        <EntityTypeShape EntityType="RosterModel.AccessControlItem" Width="1.5" PointX="8.625" PointY="0.5" />
+        <EntityTypeShape EntityType="RosterModel.AccessControlList" Width="1.5" PointX="12.75" PointY="10.625" />
+        <AssociationConnector Association="RosterModel.FK_AccessControlItem_ItemId" />
+        <AssociationConnector Association="RosterModel.FK_AccessControlItem_ListMetadataId" />
+        <AssociationConnector Association="RosterModel.FK_AccessControlList_ListMetadataId" />
+        <EntityTypeShape EntityType="RosterModel.RosterEventLock" Width="1.5" PointX="5.25" PointY="13.5" />
+        <EntityTypeShape EntityType="RosterModel.vwEventStatu" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="RosterModel.vwRosterEventTrackData" Width="1.5" PointX="7.375" PointY="13.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

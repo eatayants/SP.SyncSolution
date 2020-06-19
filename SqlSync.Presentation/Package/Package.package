@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="11098400-a7f6-4f7d-b933-15decc430000" solutionId="11098400-a7f6-4f7d-b933-15decc430000" resetWebServer="false" sharePointProductVersion="15.0" name="Roster.Presentation" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <assemblies>
+    <projectOutputAssembly location="Roster.Common.dll" deploymentTarget="GlobalAssemblyCache" projectPath="..\Roster.Common\Roster.Common.csproj" />
+    <projectOutputAssembly location="Roster.Model.dll" deploymentTarget="GlobalAssemblyCache" projectPath="..\Roster.Model\Roster.Model.csproj" />
+    <projectOutputAssembly location="Roster.BL.dll" deploymentTarget="GlobalAssemblyCache" projectPath="..\Roster.BL\Roster.BL.csproj" />
+    <customAssembly location="EntityFramework.dll" deploymentTarget="GlobalAssemblyCache" sourcePath="..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll" />
+    <customAssembly location="EntityFramework.SqlServer.dll" deploymentTarget="GlobalAssemblyCache" sourcePath="..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll" />
+    <customAssembly location="System.Collections.Immutable.dll" deploymentTarget="GlobalAssemblyCache" sourcePath="..\packages\Microsoft.Bcl.Immutable.1.0.34\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll" />
+    <customAssembly location="Camlex.NET.dll" deploymentTarget="GlobalAssemblyCache" sourcePath="..\packages\Camlex.NET.dll.4.0.0.0\lib\net20\Camlex.NET.dll" />
+  </assemblies>
+  <features>
+    <featureReference itemId="51574108-d959-4a6b-a798-6da3f40d271d" />
+    <featureReference itemId="ff01598e-91ba-4b3c-a445-a13988f792cd" />
+  </features>
+  <projectItems>
+    <projectItemReference itemId="9f202cfd-9155-484a-8602-d47865533db9" />
+    <projectItemReference itemId="abe1083e-8c9d-4b63-b1c6-99af6ac58003" />
+    <projectItemReference itemId="95f32a32-2a9d-4cdd-b58a-4ad261771382" />
+    <projectItemReference itemId="06dd25d9-0904-487b-826f-d9a7bb29e3ce" />
+    <projectItemReference itemId="04b308e6-1ef8-4aed-917c-7cbe09dc99f0" />
+  </projectItems>
+</package>

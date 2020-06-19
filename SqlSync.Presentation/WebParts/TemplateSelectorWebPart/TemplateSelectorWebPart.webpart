@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<webParts>
+  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+    <metaData>
+      <type name="Roster.Presentation.WebParts.TemplateSelectorWebPart.TemplateSelectorWebPart, $SharePoint.Project.AssemblyFullName$" />
+      <importErrorMessage>$Resources:core,ImportErrorMessage;</importErrorMessage>
+    </metaData>
+    <data>
+      <properties>
+        <property name="Title" type="string">Roster.Presentation - Template Selector WebPart</property>
+        <property name="Description" type="string">Display all Roster template Titles as DropDown and fill-in current NewForm</property>
+      </properties>
+    </data>
+  </webPart>
+</webParts>

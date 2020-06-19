@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/" >
+  <Module Name="ManagePermissionsWebPart" List="113" Url="_catalogs/wp">
+    <File Path="ManagePermissionsWebPart\ManagePermissionsWebPart.webpart" Url="Roster.Presentation_ManagePermissionsWebPart.webpart" Type="GhostableInLibrary" >
+      <Property Name="Group" Value="TotalCalibration" />
+    </File>
+  </Module>
+</Elements>
