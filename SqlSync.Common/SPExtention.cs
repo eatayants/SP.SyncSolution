@@ -10,7 +10,7 @@ using Microsoft.SharePoint;
 using Microsoft.SharePoint.Utilities;
 using System.Globalization;
 
-namespace Roster.Common
+namespace SqlSync.Common
 {
     // ReSharper disable once InconsistentNaming
 	public static class SPExtention
@@ -20,53 +20,30 @@ namespace Roster.Common
             var web = context.Web.IsRootWeb ? context.Web : context.Web.Site.RootWeb;
             return new ConnectionInfo
             {
-                Server = web.Properties["Server"].ToSafeString(),
-                Database = web.Properties["Database"].ToSafeString(),
-                User = web.Properties["User"].ToSafeString(),
-                Password = web.Properties["Password"].ToSafeString()
+                Server = web.Properties["SqlSyncServer"].ToSafeString(),
+                Database = web.Properties["SqlSyncDatabase"].ToSafeString(),
+                User = web.Properties["SqlSyncUser"].ToSafeString(),
+                Password = web.Properties["SqlSyncPassword"].ToSafeString()
             };
         }
         public static ConnectionInfo GetConnection(this SPWeb web)
         {
             var rootWeb = web.IsRootWeb ? web : web.Site.RootWeb;
             return new ConnectionInfo {
-                Server = rootWeb.Properties["Server"].ToSafeString(),
-                Database = rootWeb.Properties["Database"].ToSafeString(),
-                User = rootWeb.Properties["User"].ToSafeString(),
-                Password = rootWeb.Properties["Password"].ToSafeString()
+                Server = rootWeb.Properties["SqlSyncServer"].ToSafeString(),
+                Database = rootWeb.Properties["SqlSyncDatabase"].ToSafeString(),
+                User = rootWeb.Properties["SqlSyncUser"].ToSafeString(),
+                Password = rootWeb.Properties["SqlSyncPassword"].ToSafeString()
             };
         }
 
         public static void SetConnection(this SPContext context, ConnectionInfo connectionInfo)
         {
             var web = context.Web.IsRootWeb ? context.Web : context.Web.Site.RootWeb;
-            web.Properties["Server"] = connectionInfo.Server;
-            web.Properties["Database"] = connectionInfo.Database;
-            web.Properties["User"] = connectionInfo.User;
-            web.Properties["Password"] = connectionInfo.Password;
-            web.Properties.Update();
-        }
-
-        public static NavConnectionInfo GetNavWebServiceConnection(this SPContext context)
-        {
-            var web = context.Web.IsRootWeb ? context.Web : context.Web.Site.RootWeb;
-            return new NavConnectionInfo
-            {
-                CreateTimesheetUrl = web.Properties["NavCreateTimesheetUrl"].ToSafeString(),
-                ProcessTimesheetsUrl = web.Properties["NavProcessTimesheetsUrl"].ToSafeString(),
-                User = web.Properties["NavUser"].ToSafeString(),
-                Password = web.Properties["NavPassword"].ToSafeString(),
-                Mapping = web.Properties["webservicemapping"].ToSafeString()
-            };
-        }
-        public static void SetNavWebServiceConnection(this SPContext context, NavConnectionInfo connectionInfo)
-        {
-            var web = context.Web.IsRootWeb ? context.Web : context.Web.Site.RootWeb;
-            web.Properties["NavCreateTimesheetUrl"] = connectionInfo.CreateTimesheetUrl;
-            web.Properties["NavProcessTimesheetsUrl"] = connectionInfo.ProcessTimesheetsUrl;
-            web.Properties["NavUser"] = connectionInfo.User;
-            web.Properties["NavPassword"] = connectionInfo.Password;
-            web.Properties["webservicemapping"] = connectionInfo.Mapping;
+            web.Properties["SqlSyncServer"] = connectionInfo.Server;
+            web.Properties["SqlSyncDatabase"] = connectionInfo.Database;
+            web.Properties["SqlSyncUser"] = connectionInfo.User;
+            web.Properties["SqlSyncPassword"] = connectionInfo.Password;
             web.Properties.Update();
         }
 

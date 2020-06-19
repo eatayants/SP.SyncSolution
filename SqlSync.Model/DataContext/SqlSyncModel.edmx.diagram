@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7a60f23613bb4245b0ef2f4e01cf8753" Name="SqlSync" ZoomLevel="70">
+        <EntityTypeShape EntityType="SqlSyncModel.SystemOption" Width="1.5" PointX="4.625" PointY="0.625" />
+        <EntityTypeShape EntityType="SqlSyncModel.ListMapping" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="SqlSyncModel.ListMappingField" Width="1.5" PointX="2.75" PointY="0.5" />
+        <AssociationConnector Association="SqlSyncModel.FK_ListMappingField_ListMappingId" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

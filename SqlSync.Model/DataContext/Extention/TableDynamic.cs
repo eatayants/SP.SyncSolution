@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SqlDynamic.Queries;
 
-namespace Roster.Model.DataContext.Extention
+namespace SqlSync.Model.DataContext.Extention
 {
     public class TableDynamic
     {

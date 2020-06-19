@@ -7,7 +7,7 @@ using CamlexNET;
 using CamlexNET.Impl.Helpers;
 using Microsoft.SharePoint;
 
-namespace Roster.Common
+namespace SqlSync.Common
 {
     public static class CamlQueryHealper
     {

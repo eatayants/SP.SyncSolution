@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Roster.Model.DataContext
+namespace SqlSync.Model.DataContext
 {
     using System;
     

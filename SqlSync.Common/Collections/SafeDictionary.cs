@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace Roster.Common.Collections
+namespace SqlSync.Common.Collections
 {
 	public class SafeDictionary<TKey, TValue>
 		: Dictionary<TKey, TValue>

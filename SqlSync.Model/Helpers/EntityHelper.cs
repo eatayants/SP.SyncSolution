@@ -8,12 +8,12 @@ using System.Data.Linq.Mapping;
 using System.Data.OleDb;
 using System.Linq;
 using System.Reflection;
-using Roster.Common;
-using Roster.Model.DataContext;
+using SqlSync.Common;
+using SqlSync.Model.DataContext;
 
 #endregion
 
-namespace Roster.Model.Helpers
+namespace SqlSync.Model.Helpers
 {
 	public class CollectionMerger
 	{

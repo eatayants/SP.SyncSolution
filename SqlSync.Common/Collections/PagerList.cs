@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace Roster.Common.Collections
+namespace SqlSync.Common.Collections
 {
 	public class PagerList<T> : List<T>, IPagerEnumerable<T>
 	{

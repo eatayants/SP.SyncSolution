@@ -3,12 +3,12 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using Roster.Common;
-using Roster.Common.Collections;
+using SqlSync.Common;
+using SqlSync.Common.Collections;
 
 #endregion
 
-namespace Roster.BL.Facade
+namespace SqlSync.BL.Facade
 {
 	public interface IEntityBaseProvider<TEntity,TKeyType>
 	{

@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="SqlSyncModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+        <EntityType Name="ListMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ListName" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="TableName" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="Key" MaxLength="255" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="ListMappingField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ListMappingId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ItemName" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="FieldName" Nullable="false" MaxLength="256" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="SystemOption">
+          <Key>
+            <PropertyRef Name="OptionName" />
+          </Key>
+          <Property Name="OptionName" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="OptionValue" Nullable="false" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SqlSyncDb.dbo.vwEventStatus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SqlSyncDb.dbo.vwSqlSyncEventTrackData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <Association Name="FK_ListMappingField_ListMappingId">
+          <End Type="Self.ListMapping" Multiplicity="1" Role="ListMapping">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Self.ListMappingField" Multiplicity="*" Role="ListMappingField" />
+          <ReferentialConstraint>
+            <Principal Role="ListMapping">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMappingField">
+              <PropertyRef Name="ListMappingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Holiday_PopulateNextYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clear" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="RorterEvents_PlannedCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="eventIds" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="message" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="RorterEvents_TimesheetCheckApprove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="itemId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="startDate" Type="datetime" Mode="In" />
+          <Parameter Name="allow" Type="bit" Mode="InOut" />
+          <Parameter Name="message" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="SqlSyncEvents_SetProperties" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="itemId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="message" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="RorterEvents_TimesheetCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="eventIds" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="message" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="RorterEvents_TimesheetsCheckApprove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="datetime" Mode="In" />
+          <Parameter Name="workerId" Type="int" Mode="In" />
+          <Parameter Name="allow" Type="bit" Mode="InOut" />
+          <Parameter Name="message" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="RorterEvents_WorkingCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="eventIds" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="message" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="SqlServerAgent_JobList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SqlServerAgent_Status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="status" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="SqlSyncModelStoreContainer">
+          <EntitySet Name="ListMapping" EntityType="Self.ListMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListMappingField" EntityType="Self.ListMappingField" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemOption" EntityType="Self.SystemOption" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ListMappingField_ListMappingId" Association="Self.FK_ListMappingField_ListMappingId">
+            <End EntitySet="ListMapping" Role="ListMapping" />
+            <End EntitySet="ListMappingField" Role="ListMappingField" />
+          </AssociationSet>
+          </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SqlSyncModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SqlSyncEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SystemOptions" EntityType="SqlSyncModel.SystemOption" />
+          <EntitySet Name="ListMappings" EntityType="SqlSyncModel.ListMapping" />
+          <EntitySet Name="ListMappingFields" EntityType="SqlSyncModel.ListMappingField" />
+          <AssociationSet Name="FK_ListMappingField_ListMappingId" Association="SqlSyncModel.FK_ListMappingField_ListMappingId">
+            <End Role="ListMapping" EntitySet="ListMappings" />
+            <End Role="ListMappingField" EntitySet="ListMappingFields" />
+          </AssociationSet>
+          <FunctionImport Name="Holiday_PopulateNextYear">
+          <Parameter Name="clear" Type="Boolean" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="RorterEvents_PlannedCreate">
+            <Parameter Name="eventIds" Type="String" Mode="In" />
+            <Parameter Name="message" Type="String" Mode="InOut" />
+          </FunctionImport>
+          <FunctionImport Name="RorterEvents_TimesheetCreate">
+            <Parameter Name="eventIds" Type="String" Mode="In" />
+            <Parameter Name="message" Type="String" Mode="InOut" />
+          </FunctionImport>
+          <FunctionImport Name="SqlServerAgent_Status">
+          <Parameter Name="status" Type="Int32" Mode="InOut" />
+          </FunctionImport>
+          <FunctionImport Name="SqlServerAgent_JobList" ReturnType="Collection(SqlSyncModel.SqlServerAgent_JobList_Result)" />
+          <FunctionImport Name="SqlSyncEvents_SetProperties">
+            <Parameter Name="itemId" Type="Guid" Mode="In" />
+            <Parameter Name="message" Type="String" Mode="InOut" />
+          </FunctionImport>
+          <FunctionImport Name="RorterEvents_TimesheetCheckApprove">
+            <Parameter Name="itemId" Type="Guid" Mode="In" />
+            <Parameter Name="startDate" Type="DateTime" Mode="In" />
+            <Parameter Name="allow" Type="Boolean" Mode="InOut" />
+            <Parameter Name="message" Type="String" Mode="InOut" />
+          </FunctionImport>
+          <FunctionImport Name="RorterEvents_TimesheetsCheckApprove">
+            <Parameter Name="startDate" Type="DateTime" Mode="In" />
+            <Parameter Name="workerId" Type="Int32" Mode="In" />
+            <Parameter Name="allow" Type="Boolean" Mode="InOut" />
+            <Parameter Name="message" Type="String" Mode="InOut" />
+          </FunctionImport>
+          <FunctionImport Name="RorterEvents_WorkingCreate">
+            <Parameter Name="eventIds" Type="String" Mode="In" />
+            <Parameter Name="message" Type="String" Mode="InOut" />
+          </FunctionImport>
+          </EntityContainer>
+        <EntityType Name="SystemOption">
+          <Key>
+            <PropertyRef Name="OptionName" />
+          </Key>
+          <Property Name="OptionName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="OptionValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ListMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ListName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TableName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ListMappingFields" Relationship="SqlSyncModel.FK_ListMappingField_ListMappingId" FromRole="ListMapping" ToRole="ListMappingField" />
+          <Property Name="Key" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ListMappingField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ListMappingId" Type="Guid" Nullable="false" />
+          <Property Name="ItemName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ListMapping" Relationship="SqlSyncModel.FK_ListMappingField_ListMappingId" FromRole="ListMappingField" ToRole="ListMapping" />
+        </EntityType>
+        <Association Name="FK_ListMappingField_ListMappingId">
+          <End Type="SqlSyncModel.ListMapping" Role="ListMapping" Multiplicity="1" />
+          <End Type="SqlSyncModel.ListMappingField" Role="ListMappingField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListMapping">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListMappingField">
+              <PropertyRef Name="ListMappingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SqlServerAgent_JobList_Result">
+          <Property Type="Guid" Name="JobID" Nullable="false" />
+          <Property Type="String" Name="JobName" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="JobCategory" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="JobDescription" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="IsEnabled" Nullable="true" MaxLength="3" />
+          <Property Type="DateTime" Name="JobCreatedOn" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="JobLastModifiedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="OriginatingServerName" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="JobStartStepNo" Nullable="true" />
+          <Property Type="String" Name="JobStartStepName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="IsScheduled" Nullable="false" MaxLength="3" />
+          <Property Type="Guid" Name="JobScheduleID" Nullable="true" />
+          <Property Type="String" Name="JobScheduleName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="JobDeletionCriterion" Nullable="true" MaxLength="13" />
+          <Property Type="DateTime" Name="LastRunDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="LastRunStatus" Nullable="true" MaxLength="9" />
+          <Property Type="String" Name="LastRunDuration__HH_MM_SS_" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="LastRunStatusMessage" Nullable="true" MaxLength="4000" />
+          <Property Type="DateTime" Name="NextRunDateTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SqlSyncModelStoreContainer" CdmEntityContainer="SqlSyncEntities">
+          <EntitySetMapping Name="SystemOptions">
+            <EntityTypeMapping TypeName="SqlSyncModel.SystemOption">
+              <MappingFragment StoreEntitySet="SystemOption">
+                <ScalarProperty Name="OptionValue" ColumnName="OptionValue" />
+                <ScalarProperty Name="OptionName" ColumnName="OptionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListMappings">
+            <EntityTypeMapping TypeName="SqlSyncModel.ListMapping">
+              <MappingFragment StoreEntitySet="ListMapping">
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="ListName" ColumnName="ListName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListMappingFields">
+            <EntityTypeMapping TypeName="SqlSyncModel.ListMappingField">
+              <MappingFragment StoreEntitySet="ListMappingField">
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ListMappingId" ColumnName="ListMappingId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Holiday_PopulateNextYear" FunctionName="SqlSyncModel.Store.Holiday_PopulateNextYear" />
+          <FunctionImportMapping FunctionImportName="RorterEvents_PlannedCreate" FunctionName="SqlSyncModel.Store.RorterEvents_PlannedCreate" />
+          <FunctionImportMapping FunctionImportName="RorterEvents_TimesheetCreate" FunctionName="SqlSyncModel.Store.RorterEvents_TimesheetCreate" />
+          <FunctionImportMapping FunctionImportName="SqlServerAgent_Status" FunctionName="SqlSyncModel.Store.SqlServerAgent_Status" />
+          <FunctionImportMapping FunctionImportName="SqlServerAgent_JobList" FunctionName="SqlSyncModel.Store.SqlServerAgent_JobList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SqlSyncModel.SqlServerAgent_JobList_Result">
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="JobCategory" ColumnName="JobCategory" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="JobCreatedOn" ColumnName="JobCreatedOn" />
+                <ScalarProperty Name="JobLastModifiedOn" ColumnName="JobLastModifiedOn" />
+                <ScalarProperty Name="OriginatingServerName" ColumnName="OriginatingServerName" />
+                <ScalarProperty Name="JobStartStepNo" ColumnName="JobStartStepNo" />
+                <ScalarProperty Name="JobStartStepName" ColumnName="JobStartStepName" />
+                <ScalarProperty Name="IsScheduled" ColumnName="IsScheduled" />
+                <ScalarProperty Name="JobScheduleID" ColumnName="JobScheduleID" />
+                <ScalarProperty Name="JobScheduleName" ColumnName="JobScheduleName" />
+                <ScalarProperty Name="JobDeletionCriterion" ColumnName="JobDeletionCriterion" />
+                <ScalarProperty Name="LastRunDateTime" ColumnName="LastRunDateTime" />
+                <ScalarProperty Name="LastRunStatus" ColumnName="LastRunStatus" />
+                <ScalarProperty Name="LastRunDuration__HH_MM_SS_" ColumnName="LastRunDuration (HH:MM:SS)" />
+                <ScalarProperty Name="LastRunStatusMessage" ColumnName="LastRunStatusMessage" />
+                <ScalarProperty Name="NextRunDateTime" ColumnName="NextRunDateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RorterEvents_TimesheetCheckApprove" FunctionName="SqlSyncModel.Store.RorterEvents_TimesheetCheckApprove" />
+          <FunctionImportMapping FunctionImportName="RorterEvents_TimesheetsCheckApprove" FunctionName="SqlSyncModel.Store.RorterEvents_TimesheetsCheckApprove" />
+	  <FunctionImportMapping FunctionImportName="SqlSyncEvents_SetProperties" FunctionName="SqlSyncModel.Store.SqlSyncEvents_SetProperties" />
+          <FunctionImportMapping FunctionImportName="RorterEvents_WorkingCreate" FunctionName="SqlSyncModel.Store.RorterEvents_WorkingCreate" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

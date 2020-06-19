@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <CustomActionGroup
+  Description="Group for customize SqlSync structure"
+  Id="TC.SqlSync.SqlSyncSettings"
+  Location="Microsoft.SharePoint.SiteSettings"
+  Sequence="100"
+  Title="SQL Sync">
+  </CustomActionGroup>
+  <CustomAction
+    GroupId="TC.SqlSync.SqlSyncSettings"
+    Id="TC.SqlSync.SqlSyncSettings.SqlSyncDatabaseSetting"
+    Location="Microsoft.SharePoint.SiteSettings"
+    Sequence="305"
+    Title="Database settings">
+    <UrlAction Url="~site/_layouts/15/SqlSync.SP/DatabaseSettingsPage.aspx?Source={Source}" />
+  </CustomAction>
+  <CustomAction
+    Id="TC.SqlSync.ListColumnsMapper"
+    RegistrationType="List"
+    RegistrationId="100"
+    GroupId="GeneralSettings"
+    Location="Microsoft.SharePoint.ListEdit"
+    RequireSiteAdministrator="FALSE"
+    Sequence="303"
+    Title="Map fields to DB table columns">
+    <UrlAction Url="~site/_layouts/15/SqlSync.SP/ListColumnsMapperPage.aspx?List={ListId}"/>
+  </CustomAction>
+</Elements>

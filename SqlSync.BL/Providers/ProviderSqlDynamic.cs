@@ -11,18 +11,18 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.Serialization;
-using Roster.BL.Facade;
-using Roster.Common;
-using Roster.Common.Collections;
-using Roster.Common.Helpers;
-using Roster.Model.DataContext;
-using Roster.Model.DataContext.Extention;
-using Roster.Model.Helpers;
+using SqlSync.BL.Facade;
+using SqlSync.Common;
+using SqlSync.Common.Collections;
+using SqlSync.Common.Helpers;
+using SqlSync.Model.DataContext;
+using SqlSync.Model.DataContext.Extention;
+using SqlSync.Model.Helpers;
 using SqlDynamic.Queries;
 
 #endregion
 
-namespace Roster.BL.Providers
+namespace SqlSync.BL.Providers
 {
     internal class ProviderSqlDynamic: ProviderSqlAbstract<TableDynamic>
     {

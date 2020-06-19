@@ -2,15 +2,18 @@
 
 using System;
 using System.Collections.Generic;
-using Roster.Model.DataContext;
+using SqlSync.Model.DataContext;
 
 #endregion
 
-namespace Roster.BL.Facade
+namespace SqlSync.BL.Facade
 {
 	public interface ISystemOptionProvider : IEntityBaseProvider<SystemOption,String>
 	{
 		string DatabaseVersion { get; set; }
-        int PlannedPublishingDaysAhead { get; set; } 
-	}
+        List<string> ListTables();
+        List<string> ListFields(string table);
+        void SaveDataSource(string datasource, string statements);
+        string ReadDataSource(string datasource);
+    }
 }

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Roster.Common;
-using Roster.Model.DataContext;
+using SqlSync.Common;
+using SqlSync.Model.DataContext;
 using SqlDynamic.Queries;
 
-namespace Roster.BL.Extentions
+namespace SqlSync.BL.Extentions
 {
 	public class QueryParams
 	{

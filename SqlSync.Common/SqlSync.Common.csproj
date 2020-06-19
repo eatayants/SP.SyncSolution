@@ -7,8 +7,8 @@
     <ProjectGuid>{0274EA17-BCC1-4C07-9C64-0E34C8E42F6C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Roster.Common</RootNamespace>
-    <AssemblyName>Roster.Common</AssemblyName>
+    <RootNamespace>SqlSync.Common</RootNamespace>
+    <AssemblyName>SqlSync.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

@@ -2,7 +2,7 @@
 using System;
 using System.Diagnostics;
 
-namespace Roster.Common.Helpers
+namespace SqlSync.Common.Helpers
 {
 	public sealed class LogHelper
 	{
@@ -58,18 +58,18 @@ namespace Roster.Common.Helpers
         {
             if (ex == null)
             {
-                SPDiagnosticsService.Local.WriteTrace(0, new SPDiagnosticsCategory("Roster.Presentation", TraceSeverity.Unexpected, EventSeverity.Error), TraceSeverity.Unexpected, message, null);
+                SPDiagnosticsService.Local.WriteTrace(0, new SPDiagnosticsCategory("SqlSync.SP", TraceSeverity.Unexpected, EventSeverity.Error), TraceSeverity.Unexpected, message, null);
             }
             else
             {
-                SPDiagnosticsService.Local.WriteTrace(0, new SPDiagnosticsCategory("Roster.Presentation", TraceSeverity.Unexpected, EventSeverity.Error), TraceSeverity.Unexpected,
+                SPDiagnosticsService.Local.WriteTrace(0, new SPDiagnosticsCategory("SqlSync.SP", TraceSeverity.Unexpected, EventSeverity.Error), TraceSeverity.Unexpected,
                     ex.GetFullMessage() + "; StackTrace: " + ex.StackTrace, null);
             }
         }
 
         public void InfoULS(string message)
         {
-            SPDiagnosticsService.Local.WriteTrace(0, new SPDiagnosticsCategory("Roster.Presentation", TraceSeverity.Monitorable, EventSeverity.Information), TraceSeverity.Monitorable, message, null);
+            SPDiagnosticsService.Local.WriteTrace(0, new SPDiagnosticsCategory("SqlSync.SP", TraceSeverity.Monitorable, EventSeverity.Information), TraceSeverity.Monitorable, message, null);
         }
 
         public void Error(string message)

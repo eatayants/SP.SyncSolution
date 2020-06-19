@@ -1,4 +1,4 @@
-﻿namespace Roster.Common
+﻿namespace SqlSync.Common
 {
 	public enum TrackEventActions
 	{
@@ -13,19 +13,19 @@
     public enum DefTypes
     {
         Unspecified = 0,
-        RosterStatus = 1
+        SqlSyncStatus = 1
     }
 
-	public enum RosterEventType
+	public enum SqlSyncEventType
 	{
-		[StringValue("Planned Roster Event")]
-		PlannedRosterEvent = 0,
-		[StringValue("Working Roster Event")]
-		WorkingRosterEvent = 1,
-		[StringValue("Template Roster Event")]
-		TemplateRosterEvent = 2,
-        [StringValue("TimeSheet Roster Event")]
-        TimeSheetRosterEvent = 3
+		[StringValue("Planned SqlSync Event")]
+		PlannedSqlSyncEvent = 0,
+		[StringValue("Working SqlSync Event")]
+		WorkingSqlSyncEvent = 1,
+		[StringValue("Template SqlSync Event")]
+		TemplateSqlSyncEvent = 2,
+        [StringValue("TimeSheet SqlSync Event")]
+        TimeSheetSqlSyncEvent = 3
 	}
 
     public enum CompareType

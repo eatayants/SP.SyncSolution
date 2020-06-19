@@ -12,16 +12,16 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.Serialization;
 using Microsoft.SharePoint;
-using Roster.BL.Facade;
-using Roster.Common;
-using Roster.Common.Collections;
-using Roster.Common.Helpers;
-using Roster.Model.DataContext;
-using Roster.Model.Helpers;
+using SqlSync.BL.Facade;
+using SqlSync.Common;
+using SqlSync.Common.Collections;
+using SqlSync.Common.Helpers;
+using SqlSync.Model.DataContext;
+using SqlSync.Model.Helpers;
 
 #endregion
 
-namespace Roster.BL.Providers
+namespace SqlSync.BL.Providers
 {
 	public abstract class ProviderAbstract<TEntity, TDataContext,TKeyType> :
         ProviderBase, IEntityBaseProvider<TEntity, TKeyType>, IDisposable

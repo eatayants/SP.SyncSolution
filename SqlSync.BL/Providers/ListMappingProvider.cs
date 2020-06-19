@@ -7,17 +7,17 @@ using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.Remoting.Contexts;
-using Roster.BL.Facade;
-using Roster.Common;
-using Roster.Common.Collections;
-using Roster.Model.DataContext;
-using Roster.Model.Helpers;
+using SqlSync.BL.Facade;
+using SqlSync.Common;
+using SqlSync.Common.Collections;
+using SqlSync.Model.DataContext;
+using SqlSync.Model.Helpers;
 
 #endregion
 
-namespace Roster.BL.Providers
+namespace SqlSync.BL.Providers
 {
-    internal class ListMappingProvider : ProviderAbstract<ListMapping, RosterEntities,Guid>, IListMappingProvider
+    internal class ListMappingProvider : ProviderAbstract<ListMapping, SqlSyncEntities,Guid>, IListMappingProvider
 	{
         public ListMappingProvider()
             : base(string.Empty)
@@ -47,7 +47,7 @@ namespace Roster.BL.Providers
 			return existedEntity => existedEntity.Id == entity.Id;
 		}
 
-        protected override void OnUpdateInternal(RosterEntities db, ListMapping newEntity, ListMapping oldEntity)
+        protected override void OnUpdateInternal(SqlSyncEntities db, ListMapping newEntity, ListMapping oldEntity)
         {
             if ((newEntity == null) || (oldEntity == null)) return;
             var merger = new CollectionMerger(db);

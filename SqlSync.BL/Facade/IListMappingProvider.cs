@@ -2,13 +2,13 @@
 
 using System;
 using System.Collections.Generic;
-using Roster.Common;
-using Roster.Common.Collections;
-using Roster.Model.DataContext;
+using SqlSync.Common;
+using SqlSync.Common.Collections;
+using SqlSync.Model.DataContext;
 
 #endregion
 
-namespace Roster.BL.Facade
+namespace SqlSync.BL.Facade
 {
     public interface IListMappingProvider : IEntityBaseProvider<ListMapping,Guid>
 	{

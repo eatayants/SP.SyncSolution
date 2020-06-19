@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Roster.Common.Collections
+namespace SqlSync.Common.Collections
 {
 	public interface IContentModel
 	{

@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace Roster.Common
+namespace SqlSync.Common
 {
     public class ConnectionInfo
     {
@@ -8,9 +8,9 @@ namespace Roster.Common
         {
 #if Debug
             Server = @"localhost";
-            Database = @"RosterDb";
-            User = @"Roster";
-            Password = @"Roster123456";
+            Database = @"SqlSyncDb";
+            User = @"SqlSync";
+            Password = @"SqlSync123456";
 #endif
 
         }
@@ -42,7 +42,7 @@ namespace Roster.Common
         public override string ToString()
         {
             return string.Format("metadata=res://*/{0}.csdl|res://*/{0}.ssdl|res://*/{0}.msl;provider=System.Data.SqlClient;" +
-                        "provider connection string=\"{1}\"", "DataContext.RosterModel", GetConnectionString());
+                        "provider connection string=\"{1}\"", "DataContext.SqlSyncModel", GetConnectionString());
         }
     }
 

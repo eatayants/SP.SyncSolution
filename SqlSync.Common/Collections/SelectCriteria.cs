@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 #endregion
 
-namespace Roster.Common.Collections
+namespace SqlSync.Common.Collections
 {
 	public class SelectCriteria
 	{

@@ -15,7 +15,7 @@ using System.Text.RegularExpressions;
 
 #endregion
 
-namespace Roster.Model.Helpers
+namespace SqlSync.Model.Helpers
 {
 	public static class ContextExtensions
 	{

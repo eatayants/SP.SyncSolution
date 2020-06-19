@@ -7,13 +7,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using Microsoft.SharePoint;
-using Roster.Common;
-using Roster.Model.DataContext;
-using Roster.Model.Helpers;
+using SqlSync.Common;
+using SqlSync.Model.DataContext;
+using SqlSync.Model.Helpers;
 
 #endregion
 
-namespace Roster.BL.Providers
+namespace SqlSync.BL.Providers
 {
 	public abstract class ProviderBase
 	{
@@ -79,10 +79,10 @@ namespace Roster.BL.Providers
 			EntityHelper.CopyColumns(source, dest);
 		}
 
-        public RosterEntities CreateObjectContext()
+        public SqlSyncEntities CreateObjectContext()
 		{
             return string.IsNullOrWhiteSpace(_connectionString) ?
-                new RosterEntities() : new RosterEntities(_connectionString);
+                new SqlSyncEntities() : new SqlSyncEntities(_connectionString);
 		}
 
 		public void ReleaseObjectContextIfNotReused()
@@ -94,9 +94,6 @@ namespace Roster.BL.Providers
 		{
 
 		}
-
-
-
 		#endregion
 	}
 }

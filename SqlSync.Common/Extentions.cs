@@ -18,12 +18,12 @@ using System.Web;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using Roster.Common.Collections;
-using Roster.Common.Helpers;
+using SqlSync.Common.Collections;
+using SqlSync.Common.Helpers;
 
 #endregion
 
-namespace Roster.Common
+namespace SqlSync.Common
 {
 	#region EnumExtention
 	public class StringValueAttribute : Attribute

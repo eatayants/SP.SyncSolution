@@ -7,8 +7,8 @@
     <ProjectGuid>{97A7A625-58D4-446D-90EE-B8ECA43FBE10}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Roster.Model</RootNamespace>
-    <AssemblyName>Roster.Model</AssemblyName>
+    <RootNamespace>SqlSync.Model</RootNamespace>
+    <AssemblyName>SqlSync.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -62,117 +62,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataContext\AccessControlItem.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\AccessControlList.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\City.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\Definition.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\DefType.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\EventStatus.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\Extention\MasterRoster.cs" />
-    <Compile Include="DataContext\Extention\EventStatusProperty.cs" />
-    <Compile Include="DataContext\Extention\RosterEventProperty.cs" />
     <Compile Include="DataContext\Extention\TableDynamic.cs" />
-    <Compile Include="DataContext\Holiday.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\HolidayEvent.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\HolidayObserved.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\HolidayType.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataContext\ListMapping.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
+      <DependentUpon>SqlSyncModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataContext\ListMappingField.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
+      <DependentUpon>SqlSyncModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataContext\ListMetadata.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\ListMetadataAction.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\ListMetadataContentType.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\ListMetadataField.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\ListMetadataFieldContentType.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\Partail\vwRosterEventTrackData.cs" />
-    <Compile Include="DataContext\Partail\vwEventStatu.cs" />
-    <Compile Include="DataContext\Partail\ListMetadataField.cs" />
-    <Compile Include="DataContext\Partail\ListMetadata.cs" />
-    <Compile Include="DataContext\Partail\RosterEntities.cs" />
-    <Compile Include="DataContext\Partail\EventStatus.cs" />
-    <Compile Include="DataContext\Partail\RosterEvent.cs" />
-    <Compile Include="DataContext\Partail\Definition.cs" />
-    <Compile Include="DataContext\Partail\SqlAgentJob.cs" />
-    <Compile Include="DataContext\RosterEvent.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\RosterEventLock.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\RosterModel.Context.cs">
+    <Compile Include="DataContext\SqlSyncModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RosterModel.Context.tt</DependentUpon>
+      <DependentUpon>SqlSyncModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataContext\RosterModel.cs">
+    <Compile Include="DataContext\SqlSyncModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RosterModel.tt</DependentUpon>
+      <DependentUpon>SqlSyncModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataContext\RosterModel.Designer.cs">
+    <Compile Include="DataContext\SqlSyncModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RosterModel.edmx</DependentUpon>
+      <DependentUpon>SqlSyncModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataContext\SqlServerAgent_JobList_Result.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\State.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
+      <DependentUpon>SqlSyncModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataContext\SystemOption.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\ViewMetadata.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\ViewMetadataField.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\ViewMetadataPopupSetting.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\ViewMetadataWhereCritery.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\vwEventStatu.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\vwRosterEventTrackData.cs">
-      <DependentUpon>RosterModel.tt</DependentUpon>
+      <DependentUpon>SqlSyncModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Helpers\EntityHelper.cs" />
     <Compile Include="Helpers\ContextExtensions.cs" />
@@ -182,22 +98,22 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="DataContext\RosterModel.edmx">
+    <EntityDeploy Include="DataContext\SqlSyncModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RosterModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>SqlSyncModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DataContext\RosterModel.Context.tt">
+    <None Include="DataContext\SqlSyncModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RosterModel.edmx</DependentUpon>
-      <LastGenOutput>RosterModel.Context.cs</LastGenOutput>
+      <DependentUpon>SqlSyncModel.edmx</DependentUpon>
+      <LastGenOutput>SqlSyncModel.Context.cs</LastGenOutput>
     </None>
-    <None Include="DataContext\RosterModel.edmx.diagram">
-      <DependentUpon>RosterModel.edmx</DependentUpon>
+    <None Include="DataContext\SqlSyncModel.edmx.diagram">
+      <DependentUpon>SqlSyncModel.edmx</DependentUpon>
     </None>
-    <None Include="DataContext\RosterModel.tt">
+    <None Include="DataContext\SqlSyncModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RosterModel.edmx</DependentUpon>
-      <LastGenOutput>RosterModel.cs</LastGenOutput>
+      <DependentUpon>SqlSyncModel.edmx</DependentUpon>
+      <LastGenOutput>SqlSyncModel.cs</LastGenOutput>
     </None>
     <None Include="key.snk" />
     <None Include="packages.config" />
@@ -206,12 +122,14 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Roster.Common\Roster.Common.csproj">
+    <ProjectReference Include="..\SqlSync.Common\SqlSync.Common.csproj">
       <Project>{0274ea17-bcc1-4c07-9c64-0e34c8e42f6c}</Project>
-      <Name>Roster.Common</Name>
+      <Name>SqlSync.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DataContext\Partail\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

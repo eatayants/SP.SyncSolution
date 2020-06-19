@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="364887ca-8c94-4b84-84d7-63e992d12050" solutionId="364887ca-8c94-4b84-84d7-63e992d12050" resetWebServer="false" sharePointProductVersion="15.0" name="SqlSync.SP" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <assemblies>
+    <projectOutputAssembly location="SqlSync.Common.dll" deploymentTarget="GlobalAssemblyCache" projectPath="..\SqlSync.Common\SqlSync.Common.csproj" />
+    <projectOutputAssembly location="SqlSync.Model.dll" deploymentTarget="GlobalAssemblyCache" projectPath="..\SqlSync.Model\SqlSync.Model.csproj" />
+    <projectOutputAssembly location="SqlSync.BL.dll" deploymentTarget="GlobalAssemblyCache" projectPath="..\SqlSync.BL\SqlSync.BL.csproj" />
+    <customAssembly location="EntityFramework.dll" deploymentTarget="GlobalAssemblyCache" sourcePath="..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll" />
+    <customAssembly location="EntityFramework.SqlServer.dll" deploymentTarget="GlobalAssemblyCache" sourcePath="..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll" />
+    <customAssembly location="System.Collections.Immutable.dll" deploymentTarget="GlobalAssemblyCache" sourcePath="..\packages\Microsoft.Bcl.Immutable.1.0.34\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll" />
+    <customAssembly location="Camlex.NET.dll" deploymentTarget="GlobalAssemblyCache" sourcePath="..\packages\Camlex.NET.dll.4.0.0.0\lib\net20\Camlex.NET.dll" />
+  </assemblies>
+  <features>
+    <featureReference itemId="51574108-d959-4a6b-a798-6da3f40d271d" />
+  </features>
+  <projectItems>
+    <projectItemReference itemId="9f202cfd-9155-484a-8602-d47865533db9" />
+  </projectItems>
+</package>

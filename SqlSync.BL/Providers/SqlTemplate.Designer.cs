@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Roster.BL.Providers {
+namespace SqlSync.BL.Providers {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Roster.BL.Providers {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Roster.BL.Providers.SqlTemplate", typeof(SqlTemplate).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SqlSync.BL.Providers.SqlTemplate", typeof(SqlTemplate).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

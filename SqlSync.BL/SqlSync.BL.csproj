@@ -7,8 +7,8 @@
     <ProjectGuid>{90126CA3-3475-4B12-8D64-05B32DEFEC6A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Roster.BL</RootNamespace>
-    <AssemblyName>Roster.BL</AssemblyName>
+    <RootNamespace>SqlSync.BL</RootNamespace>
+    <AssemblyName>SqlSync.BL</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -66,50 +66,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfigService.cs" />
+    <Compile Include="AppDataService.cs" />
     <Compile Include="Extentions\Extentions.cs" />
-    <Compile Include="Extentions\QueryCriteria.cs" />
     <Compile Include="Extentions\XmlParser.cs" />
-    <Compile Include="Facade\IAccessControlItemProvider.cs.cs" />
     <Compile Include="Facade\IListMappingProvider.cs" />
-    <Compile Include="Facade\IListMetadataContentTypeProvider.cs" />
-    <Compile Include="Facade\IRosterEventLockProvider.cs" />
-    <Compile Include="Facade\IListMetadataProvider.cs" />
-    <Compile Include="Facade\IHolidayEventProvider.cs" />
-    <Compile Include="Facade\IEventStatusProvider.cs" />
-    <Compile Include="Facade\ITrackingDataViewProvider.cs" />
-    <Compile Include="Facade\IRosterEventProvider.cs" />
-    <Compile Include="Facade\IViewMetadataPopupSettingProvider.cs" />
-    <Compile Include="Facade\IViewMetadataWhereCriteryProvider.cs" />
-    <Compile Include="Facade\IViewMetadataFieldProvider.cs" />
-    <Compile Include="Facade\IListMetadataFieldProvider.cs" />
-    <Compile Include="Facade\IViewMetadataProvider.cs" />
     <Compile Include="Facade\ISystemOptionsProvider.cs" />
-    <Compile Include="Facade\IDefinitionProvider.cs" />
     <Compile Include="Facade\IEntityBaseProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\AccessControlItemProvider.cs" />
-    <Compile Include="Providers\AccessControlListProvider.cs" />
-    <Compile Include="Facade\IAccessControlListProvider.cs" />
-    <Compile Include="Providers\TrackingDataViewProvider.cs" />
     <Compile Include="Providers\ListMappingProvider.cs" />
-    <Compile Include="Providers\EventStatusProvider.cs" />
-    <Compile Include="Providers\RosterEventLockProvider.cs" />
     <Compile Include="Providers\ProviderSqlDynamic.cs" />
-    <Compile Include="Providers\EventStatusPropertyProvider.cs" />
-    <Compile Include="Providers\RosterEventPropertyProvider.cs" />
     <Compile Include="Providers\ProviderSqlAbstract.cs" />
-    <Compile Include="Providers\HolidayEventProvider.cs" />
-    <Compile Include="Providers\ViewMetadataPopupSettingProvider.cs" />
-    <Compile Include="Providers\ContentTypeProvider.cs" />
-    <Compile Include="Providers\ViewMetadataWhereCriteryProvider.cs" />
-    <Compile Include="RosterDataService.cs" />
-    <Compile Include="RosterConfigService.cs" />
-    <Compile Include="Providers\ListMetadataFieldProvider.cs" />
-    <Compile Include="Providers\ViewMetadataFieldProvider.cs" />
-    <Compile Include="Providers\ListMetadataProvider.cs" />
-    <Compile Include="Providers\ViewMetadataProvider.cs" />
-    <Compile Include="Providers\RosterEventProvider.cs" />
-    <Compile Include="Providers\DefinitionProvider.cs" />
     <Compile Include="Providers\ProviderAbstract.cs" />
     <Compile Include="Providers\ProviderBase.cs" />
     <Compile Include="Providers\SystemOptionProvider.cs" />
@@ -118,17 +85,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SqlTemplate.resx</DependentUpon>
     </Compile>
-    <Compile Include="Extentions\QueryParams.cs" />
-    <Compile Include="Providers\MasterRosterProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Roster.Common\Roster.Common.csproj">
+    <ProjectReference Include="..\SqlSync.Common\SqlSync.Common.csproj">
       <Project>{0274ea17-bcc1-4c07-9c64-0e34c8e42f6c}</Project>
-      <Name>Roster.Common</Name>
+      <Name>SqlSync.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Roster.Model\Roster.Model.csproj">
+    <ProjectReference Include="..\SqlSync.Model\SqlSync.Model.csproj">
       <Project>{97a7a625-58d4-446d-90ee-b8eca43fbe10}</Project>
-      <Name>Roster.Model</Name>
+      <Name>SqlSync.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

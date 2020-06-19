@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System;
 
-namespace Roster.Common.Helpers
+namespace SqlSync.Common.Helpers
 {
 	public sealed class SecurityUtils
 	{

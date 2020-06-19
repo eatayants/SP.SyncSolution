@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Roster.Common.Collections
+namespace SqlSync.Common.Collections
 {
     [Serializable]
     public struct MinMax<T> : IEquatable<MinMax<T>>
